@@ -15,6 +15,8 @@
         'views/ticket.xml',
         'views/crop.xml',
         'views/sample.xml',
+        'views/category.xml',
+        'views/analysis.xml',
     ],
     'demo': [
         'demo.xml',

@@ -14,3 +14,4 @@ class Sample(models.Model):
 	address = fields.Text(string="Otras Señas")
 	land = fields.Text(string="Identificacion de Campo")
 	crop = fields.Many2one('lab.crop', string="Cultivo")
+	analysis_ids = fields.Many2many('lab.analysis',string="Analisis requeridos")

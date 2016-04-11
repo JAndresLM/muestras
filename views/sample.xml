@@ -23,6 +23,7 @@
 						</group>
 						<notebook>
                             <page string="Analisis Requeridos">
+                            	<field name="analysis_ids"/>
                             </page>
                         </notebook>
 					</sheet>

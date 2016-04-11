@@ -1,0 +1,42 @@
+<openerp>
+	<data>
+		<record model="ir.ui.view" id="analysis_form_view">
+			<field name="name">analysis.form</field>
+			<field name="model">lab.analysis</field>
+			<field name="arch" type="xml">
+				<form string="Formulario para analisis">
+					<sheet>
+						<group>
+							<field name="name"/>
+							<field name="category"/>
+							<field name="cost"/>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="analysis_tree_view">
+			<field name="name">analysis.tree</field>
+			<field name="model">lab.analysis</field>
+			<field name="arch" type="xml">
+				<tree string="Lista de analisis">
+					<field name="name"/>
+					<field name="category"/>
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="analysis_list_action">
+			<field name="name">Lista de Analisis</field>
+			<field name="res_model">lab.analysis</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Agregar el primer analisys</p>
+			</field>
+		</record>
+
+		<menuitem id="submenu_analysis" name="Analisis" parent="submenu_laboratory_extras" action="analysis_list_action"/>
+	</data>
+</openerp>

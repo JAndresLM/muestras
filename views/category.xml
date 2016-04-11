@@ -1,0 +1,39 @@
+<openerp>
+	<data>
+		<record model="ir.ui.view" id="category_form_view">
+			<field name="name">category.form</field>
+			<field name="model">lab.category</field>
+			<field name="arch" type="xml">
+				<form string="Formulario para categorias de analisis">
+					<sheet>
+						<group>
+							<field name="name"/>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="category_tree_view">
+			<field name="name">category.tree</field>
+			<field name="model">lab.category</field>
+			<field name="arch" type="xml">
+				<tree string="Categorias de analisis">
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="category_list_action">
+			<field name="name">Lista de categorias</field>
+			<field name="res_model">lab.category</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Crear la primera categoria</p>
+			</field>
+		</record>
+
+		<menuitem id="submenu_category" name="Categorias de Analisis" parent="submenu_laboratory_extras" action="category_list_action"/>
+	</data>
+</openerp>

@@ -13,5 +13,5 @@ class Ticket(models.Model):
 	report = fields.Many2one('lab.report',string="Tipo de informe")
 	discount = fields.Integer(string="Descuento")
 	cost= fields.Integer(string="Costo Total")
-	invoice = fields.Char(string="Numero de factura", required=True)
+	invoice = fields.Char(string="Numero de factura")
 	sample_ids = fields.One2many('lab.sample','ticket', string="Muestras")
