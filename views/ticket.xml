@@ -1,0 +1,61 @@
+<openerp>
+	<data>
+		<record model="ir.ui.view" id="ticket_form_view">
+			<field name="name">ticket.form</field>
+			<field name="model">lab.ticket</field>
+			<field name="arch" type="xml">
+				<form string="Formulario para Boletas">
+					<sheet>
+						<group>
+							<group string="Información">
+								<field name="name"/>
+								<field name="customer"/>
+								<field name="analyst"/>
+								<field name="date"/>
+								<field name="active"/>
+							</group>
+							<group string="Otros">
+								<field name="report"/>
+								<field name="discount"/>
+								<field name="cost"/>
+								<field name="invoice"/>
+							</group>
+						</group>
+						<notebook>
+                            <page string="Muestras Asociadas">
+                            	<field name="sample_ids">
+									<tree string="Muestras">
+										<field name="name"/>
+									</tree>
+								</field>
+                            </page>
+                        </notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="ticket_tree_view">
+			<field name="name">ticket.tree</field>
+			<field name="model">lab.ticket</field>
+			<field name="arch" type="xml">
+				<tree string="Lista de Boletas">
+					<field name="name"/>
+					<field name="customer"/>
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="ticket_list_action">
+			<field name="name">Lista De Boletas</field>
+			<field name="res_model">lab.ticket</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Agregar la primera boleta</p>
+			</field>
+		</record>
+
+		<menuitem id="submenu_tickets" name="Boletas" parent="submenu_laboratory_general" action="ticket_list_action"/>
+	</data>
+</openerp>

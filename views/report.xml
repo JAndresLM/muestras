@@ -1,0 +1,39 @@
+<openerp>
+	<data>
+		<record model="ir.ui.view" id="report_form_view">
+			<field name="name">report.form</field>
+			<field name="model">lab.report</field>
+			<field name="arch" type="xml">
+				<form string="Formulario para tipos de reporte">
+					<sheet>
+						<group>
+							<field name="name"/>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="report_tree_view">
+			<field name="name">report.tree</field>
+			<field name="model">lab.report</field>
+			<field name="arch" type="xml">
+				<tree string="Tipos de Informe">
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="report_list_action">
+			<field name="name">Tipos de informe</field>
+			<field name="res_model">lab.report</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Crear el primer tipo de informe</p>
+			</field>
+		</record>
+
+		<menuitem id="submenu_reports" name="Tipos de Informe" parent="submenu_laboratory_extras" action="report_list_action"/>
+	</data>
+</openerp>

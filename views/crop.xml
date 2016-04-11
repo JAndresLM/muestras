@@ -1,0 +1,39 @@
+<openerp>
+	<data>
+		<record model="ir.ui.view" id="crop_form_view">
+			<field name="name">crop.form</field>
+			<field name="model">lab.crop</field>
+			<field name="arch" type="xml">
+				<form string="Formulario para tipos de cultivos">
+					<sheet>
+						<group>
+							<field name="name"/>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="crop_tree_view">
+			<field name="name">crop.tree</field>
+			<field name="model">lab.crop</field>
+			<field name="arch" type="xml">
+				<tree string="Cultivos">
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="crop_list_action">
+			<field name="name">Lista de cultivos</field>
+			<field name="res_model">lab.crop</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Crear el primer cultivo</p>
+			</field>
+		</record>
+
+		<menuitem id="submenu_crop" name="Cultivos" parent="submenu_laboratory_extras" action="crop_list_action"/>
+	</data>
+</openerp>

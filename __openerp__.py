@@ -8,12 +8,15 @@
     'website': "http://www.andmaca.blogspot.com",
     'category': 'Agronomía',
     'version': '8.0.1',
-    'depends': ['base'],
+    'depends': ['base','clientes'],
     'data': [
-        'views/customers.xml',
-        'views/places.xml',
+        'views/menu.xml',
+        'views/report.xml',
+        'views/ticket.xml',
+        'views/crop.xml',
+        'views/sample.xml',
     ],
     'demo': [
         'demo.xml',
-        ],
+    ],
 }

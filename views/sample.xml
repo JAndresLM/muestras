@@ -1,0 +1,56 @@
+<openerp>
+	<data>
+		<record model="ir.ui.view" id="sample_form_view">
+			<field name="name">sample.form</field>
+			<field name="model">lab.sample</field>
+			<field name="arch" type="xml">
+				<form string="Formulario para Muestras">
+					<sheet>
+						<group>
+							<group string="Información">
+								<field name="name"/>
+								<field name="ticket" widget="selection"/>
+								<field name="crop"/>
+								<field name="land"/>
+								<field name="active"/>
+							</group>
+							<group string="Ubicación">
+								<field name="province"/>
+								<field name="canton"/>
+								<field name="district"/>
+								<field name="address"/>
+							</group>
+						</group>
+						<notebook>
+                            <page string="Analisis Requeridos">
+                            </page>
+                        </notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="sample_tree_view">
+			<field name="name">sample.tree</field>
+			<field name="model">lab.sample</field>
+			<field name="arch" type="xml">
+				<tree string="Lista de Muestras">
+					<field name="name"/>
+					<field name="ticket"/>
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="sample_list_action">
+			<field name="name">Lista De Muestras</field>
+			<field name="res_model">lab.sample</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Agregar la primera muestra</p>
+			</field>
+		</record>
+
+		<menuitem id="submenu_samples" name="Muestras" parent="submenu_laboratory_general" action="sample_list_action"/>
+	</data>
+</openerp>
