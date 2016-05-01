@@ -19,7 +19,7 @@
 								<field name="discount"/>
 								<field name="cost"/>
 								<field name="paid"/>
-								<field name="invoice"/>
+								<field name="invoice" attrs="{'readonly': [('paid','=',False)]}"/>
 							</group>
 						</group>
 						<notebook>
