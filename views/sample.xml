@@ -5,6 +5,12 @@
 			<field name="model">lab.sample</field>
 			<field name="arch" type="xml">
 				<form string="Formulario para Muestras">
+					<header>
+						<button name="action_recibido" type="object" string="Pasar a Recibido" states="p"/>
+						<button name="action_progreso" type="object" string="Pasar a Progreso" states="r,a" class="oe_highlight"/>
+						<button name="action_analizado" type="object" string="Pasar a Analizado" states="p" class="oe_highlight"/>
+						<field name="state" widget="statusbar"/>
+					</header>
 					<sheet>
 						<group>
 							<group string="Información">

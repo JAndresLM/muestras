@@ -18,6 +18,7 @@
 								<field name="report"/>
 								<field name="discount"/>
 								<field name="cost"/>
+								<field name="paid"/>
 								<field name="invoice"/>
 							</group>
 						</group>
@@ -42,6 +43,7 @@
 				<tree string="Lista de Boletas">
 					<field name="name"/>
 					<field name="customer"/>
+					<field name="samples_analized" widget="progressbar"/>
 				</tree>
 			</field>
 		</record>
