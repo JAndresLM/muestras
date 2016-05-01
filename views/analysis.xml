@@ -11,6 +11,11 @@
 							<field name="category"/>
 							<field name="cost"/>
 						</group>
+						<notebook>
+                            <page string="elementos Pertenecientes">
+                            	<field name="elements_ids"/>
+                            </page>
+                        </notebook>
 					</sheet>
 				</form>
 			</field>

@@ -1,0 +1,39 @@
+<openerp>
+	<data>
+		<record model="ir.ui.view" id="element_form_view">
+			<field name="name">element.form</field>
+			<field name="model">lab.element</field>
+			<field name="arch" type="xml">
+				<form string="Formulario para elementos">
+					<sheet>
+						<group>
+							<field name="name"/>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="element_tree_view">
+			<field name="name">element.tree</field>
+			<field name="model">lab.element</field>
+			<field name="arch" type="xml">
+				<tree string="Lista de elementos">
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="element_list_action">
+			<field name="name">Lista de elementos</field>
+			<field name="res_model">lab.element</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Agregar el primer elemento</p>
+			</field>
+		</record>
+
+		<menuitem id="submenu_element" name="Elementos" parent="submenu_laboratory_extras" action="element_list_action"/>
+	</data>
+</openerp>

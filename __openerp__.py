@@ -17,6 +17,7 @@
         'views/sample.xml',
         'views/category.xml',
         'views/analysis.xml',
+        'views/element.xml',
     ],
     'demo': [
         'demo.xml',

@@ -8,3 +8,4 @@ class Analysis(models.Model):
 	name = fields.Char(string="Nombre del analisis", required=True)
 	category = fields.Many2one('lab.category', string="Tipo de analisis", required=True)
 	cost = fields.Integer(string="costo del analisis")
+	elements_ids = fields.Many2many('lab.element',string="Elementos Pertenecientes")
