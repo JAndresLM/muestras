@@ -1,6 +1,6 @@
 <openerp>
 	<data>
-		<menuitem id="laboratory_main_menu" name="GESTIÓN DE MUESTRAS"/>
+		<menuitem id="laboratory_main_menu" name="GESTIÓN DE MUESTRAS" sequence="0"/>
 		<menuitem id="submenu_laboratory_general" parent="laboratory_main_menu" name="GENERAL"/>
 		<menuitem id="submenu_laboratory_extras" parent="laboratory_main_menu" name="EXTRAS"/>
 	</data>

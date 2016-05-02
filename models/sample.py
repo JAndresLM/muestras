@@ -14,12 +14,12 @@ class Sample(models.Model):
 	address = fields.Text(string="Otras Señas")
 	land = fields.Text(string="Identificación de Campo")
 	crop = fields.Many2one('lab.crop', string="Cultivo")
-	analysis_ids = fields.Many2many('lab.analysis',string="Análisis requeridos")
+	analysis_ids = fields.Many2many('lab.analysis',string="Análisis Requeridos")
 	state = fields.Selection([
         ('r', "Recibido"),
         ('p', "En Progreso"),
         ('a', "Analizado"),
-    ],default='r')
+    ],default='r',string="Estado")
 
 	@api.multi
 	def action_recibido(self):

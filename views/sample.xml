@@ -20,7 +20,7 @@
 								<field name="land"/>
 								<field name="active"/>
 							</group>
-							<group string="Ubicación">
+							<group string="Ubicación de la muestra">
 								<field name="province"/>
 								<field name="canton"/>
 								<field name="district"/>

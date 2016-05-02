@@ -24,9 +24,12 @@
 						</group>
 						<notebook>
                             <page string="Muestras Asociadas">
+                            	POR FAVOR GUARDAR LA BOLETA ANTES DE EMPEZAR A AGREGAR MUESTRAS!
                             	<field name="sample_ids">
 									<tree string="Muestras">
 										<field name="name"/>
+										<field name="analysis_ids"/>
+										<field name="state"/>
 									</tree>
 								</field>
                             </page>

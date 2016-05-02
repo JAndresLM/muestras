@@ -18,6 +18,7 @@
         'views/category.xml',
         'views/analysis.xml',
         'views/element.xml',
+        'reports/report_ticket.xml',
     ],
     'demo': [
         'demo.xml',
