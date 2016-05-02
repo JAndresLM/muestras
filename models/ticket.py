@@ -11,7 +11,7 @@ class Ticket(models.Model):
 	customer = fields.Many2one('customers.customer', string="Cliente", required=True)
 	active = fields.Boolean(default=True, string="Activo")
 	report = fields.Many2one('lab.report',string="Tipo de informe")
-	discount = fields.Integer(string="Descuento")
+	discount = fields.Integer(string="Descuento", default=0)
 	cost= fields.Integer(string="Costo Total",compute='_get_cost')
 	paid = fields.Boolean(default=True, string="Pago Realizado")
 	invoice = fields.Char(string="Numero de factura",default=False)
@@ -36,14 +36,25 @@ class Ticket(models.Model):
 		for r in self:
 			r.number_samples = len(r.sample_ids)
 
-	@api.depends('sample_ids')
+	@api.multi
+	def _validate_discount(self):
+		if self.discount<0 or self.discount>100:
+			return False
+		return True
+
+	_constraints = [
+		(_validate_discount, '\n\nPor favor ingrese un descuento válido. \nMayor que 0 y menor que 100', ['discount']),
+	]
+
+	@api.depends('sample_ids','discount')
 	def _get_cost(self):
 		for record in self:
 			sum_cost=0
 			for m in record.sample_ids:
 				for a in m.analysis_ids:
 					sum_cost=sum_cost+a.cost
-			record.cost=sum_cost
+			disc=sum_cost*record.discount/100
+			record.cost=sum_cost-disc
 
 	_sql_constraints = [
 		('name_unique',
