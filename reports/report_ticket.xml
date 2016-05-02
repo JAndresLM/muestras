@@ -13,14 +13,60 @@
             <t t-foreach="docs" t-as="doc">
                 <t t-call="report.external_layout">
                     <div class="page">
-                        <h2 t-field="doc.name"/>
-                        <p>Cliente: <span t-field="doc.customer"/></p>
-                        <h3>Muestras:</h3>
-                        <ul>
-                            <t t-foreach="doc.sample_ids" t-as="m">
-                                <li><span t-field="m.name"/></li>
-                            </t>
-                        </ul>
+                    	<style>
+                            *{
+                                font-size:14px;
+                            }
+                            h3{font-weight:bold;}
+                    	</style>
+                        <h2 class="text-center">REPORTE DE MUESTRAS</h2>
+                        <hr/>
+                        <table id="tinfo" class="table table-condensed">
+                                <tr>
+                                    <td><strong>Cliente: </strong><span t-field="doc.customer"/></td>
+                                    <td><strong>Teléfono: </strong><span t-field="doc.customer.phone_ids[0].name"/></td>
+                                    <td><strong>Fecha: </strong><span t-field="doc.date"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Provincia: </strong><span t-field="doc.customer.province"/></td>
+                                    <td><strong>Canton: </strong><span t-field="doc.customer.canton"/></td>
+                                    <td><strong>Distrito: </strong><span t-field="doc.customer.district"/></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3"><strong>Otras Señas: </strong><span t-field="doc.customer.address"/></td>
+                                </tr>
+                        </table>
+                        <style>
+                            #tinfo, #tinfo tr, #tinfo tr td{
+                                border: solid white 1px;
+                            }
+                        </style>
+                        <hr/>
+                        <h3>Muestras Analizadas</h3>
+                        <t t-foreach="doc.sample_ids" t-as="m">
+                            <table width="100%" id="tmuestra" class="">
+                                <tr>
+                                    <td width="20%"><strong>Codigo: </strong><span t-field="m.name"/></td>
+                                    <td width="60%"><strong>Identificacion de campo: </strong><span t-field="m.land"/></td>
+                                    <td width="20%"><strong>Cultivo: </strong><span t-field="m.crop"/></td>
+                                </tr>
+                            </table>
+                            <style>
+                            #tmuestra, #tmuestra tr, #tmuestra tr td{
+                                border: solid white 1px;
+                            }
+                            </style>
+                            <!--<strong>Codigo: </strong><span t-field="m.name"/><br/>
+                            <strong>Identificacion de campo: </strong><span t-field="m.land"/><br/>
+                            <strong>Cultivo: </strong><span t-field="m.crop"/><br/>-->
+                            <table class="table table-condensed table-bordered">
+                                <tr>
+                                    <t t-foreach="m.analysis_ids" t-as="a">
+                                        <td><span t-field="a.name"/></td>
+                                    </t>
+                                </tr>
+                            </table>
+                        </t>
                     </div>
                 </t>
             </t>
