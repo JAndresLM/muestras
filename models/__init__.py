@@ -8,3 +8,4 @@ from . import element
 from . import report
 from . import ticket
 from . import sample
+from . import result

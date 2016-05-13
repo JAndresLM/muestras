@@ -20,6 +20,7 @@ class Sample(models.Model):
         ('p', "En Progreso"),
         ('a', "Analizado"),
     ],default='r',string="Estado")
+	result_ids=fields.One2many('lab.result', string="Resultados de la muestra",compute='_insert_results')
 
 	@api.multi
 	def action_recibido(self):
@@ -32,6 +33,14 @@ class Sample(models.Model):
 	@api.multi
 	def action_analizado(self):
 		self.state = 'a'
+
+	@api.depends('analysis_ids')
+	def _insert_results(self):
+		for r in self:
+			for a in r.analysis_ids:
+				for e in a.elements_ids:
+					nombre="R"+str(r.id)+str(e.id)
+					idr=self.env['lab.result'].create({'name':nombre})
 
 	_sql_constraints = [
 		('name_unique',

@@ -31,6 +31,9 @@
                             <page string="Analisis Requeridos">
                             	<field name="analysis_ids"/>
                             </page>
+                            <page string="Resultados de la muestra">
+                            	<field name="result_ids"/>
+                            </page>
                         </notebook>
 					</sheet>
 				</form>
