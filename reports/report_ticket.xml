@@ -56,13 +56,15 @@
                                 border: solid white 1px;
                             }
                             </style>
-                            <!--<strong>Codigo: </strong><span t-field="m.name"/><br/>
-                            <strong>Identificacion de campo: </strong><span t-field="m.land"/><br/>
-                            <strong>Cultivo: </strong><span t-field="m.crop"/><br/>-->
                             <table class="table table-condensed table-bordered">
                                 <tr>
-                                    <t t-foreach="m.analysis_ids" t-as="a">
-                                        <td><span t-field="a.name"/></td>
+                                    <t t-foreach="m.result_ids" t-as="a">
+                                        <td><strong><span t-field="a.element_id"/></strong></td>
+                                    </t>
+                                </tr>
+                                <tr>
+                                    <t t-foreach="m.result_ids" t-as="a">
+                                        <td><span t-field="a.valor"/></td>
                                     </t>
                                 </tr>
                             </table>

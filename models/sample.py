@@ -45,6 +45,21 @@ class Sample(models.Model):
 						recs = model.search([('name', '=', nombre)])
 						if len(recs)==0:
 							self.env['lab.result'].create({'name':nombre, 'sample_id':r.id,'element_id':e.id})
+			results=self.env['lab.result'].search([('sample_id', '=', r.id)])
+			listaBorrrar=[]
+			for result in results:
+				encontrado=False
+				for a in r.analysis_ids:
+					for e in a.elements_ids:
+						if e.id==result.element_id:
+							encontrado=True
+							break
+					if encontrado==True:
+						break
+				if encontrado==False:
+					listaBorrrar.append(result.element_id)
+			if len(listaBorrrar)!=0:
+				print "hola"
 
 	_sql_constraints = [
 		('name_unique',
