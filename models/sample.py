@@ -6,7 +6,7 @@ from openerp import models, fields, api
 class Sample(models.Model):
 	_name = 'lab.sample'
 	name = fields.Char(string="Código de Muestra", required=True)
-	ticket = fields.Many2one('lab.ticket', string="Boleta", required=True)
+	ticket = fields.Many2one('lab.ticket', string="Boleta",ondelete='cascade',required=True)
 	active = fields.Boolean(default=True, string="Activo")
 	province = fields.Many2one('customers.province', ondelete='cascade', string="Provincia")
 	canton = fields.Many2one('customers.canton', ondelete='cascade', string="Cantón")
@@ -20,7 +20,7 @@ class Sample(models.Model):
         ('p', "En Progreso"),
         ('a', "Analizado"),
     ],default='r',string="Estado")
-	result_ids=fields.One2many('lab.result', string="Resultados de la muestra",compute='_insert_results')
+	result_ids=fields.One2many('lab.result','sample_id',string="Resultados de la muestra")
 
 	@api.multi
 	def action_recibido(self):
@@ -34,13 +34,22 @@ class Sample(models.Model):
 	def action_analizado(self):
 		self.state = 'a'
 
-	@api.depends('analysis_ids')
-	def _insert_results(self):
+	@api.multi
+	def insert_results(self):
 		for r in self:
 			for a in r.analysis_ids:
 				for e in a.elements_ids:
-					nombre="R"+str(r.id)+str(e.id)
-					idr=self.env['lab.result'].create({'name':nombre})
+					nombre="M"+str(r.id)+"E"+str(e.id)
+					if nombre[1].isdigit():
+						model = self.env['lab.result']
+						recs = model.search([('name', '=', nombre)])
+						if len(recs)==0:
+							self.env['lab.result'].create({'name':nombre, 'sample_id':r.id,'element_id':e.id})
+							#r.result_ids=model.search([('sample_id', '=', r.id)])
+							#course_osv.write(cr, uid, [course_id], {'student_ids': [(0, 0, {'name': 'John', 'age': 12})]})
+							#self.env['lab.result'].cr.execute("", param1, param2, param3)
+							#self.env['lab.result'].unlink([('name', '=', nombre)])
+
 
 	_sql_constraints = [
 		('name_unique',

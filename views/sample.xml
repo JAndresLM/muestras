@@ -9,6 +9,7 @@
 						<button name="action_recibido" type="object" string="Pasar a Recibido" states="p"/>
 						<button name="action_progreso" type="object" string="Pasar a Progreso" states="r,a" class="oe_highlight"/>
 						<button name="action_analizado" type="object" string="Pasar a Analizado" states="p" class="oe_highlight"/>
+						<button name="insert_results" type="object" string="ACTUALIZAR" states="p,r,a" class="oe_highlight"/>
 						<field name="state" widget="statusbar"/>
 					</header>
 					<sheet>
@@ -32,7 +33,13 @@
                             	<field name="analysis_ids"/>
                             </page>
                             <page string="Resultados de la muestra">
-                            	<field name="result_ids"/>
+								<field name="result_ids">
+									<tree string="Resultados" editable="bottom">
+										<field name="name"/>
+										<field name="element_id"/>
+										<field name="valor"/>
+									</tree>
+								</field>
                             </page>
                         </notebook>
 					</sheet>

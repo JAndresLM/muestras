@@ -6,8 +6,8 @@ from openerp import models, fields, api
 class Result(models.Model):
 	_name = 'lab.result'
 	name = fields.Char(string="Código del resultado")
-	sample_id=fields.Many2one('lab.sample',string="Muestra")
-	element_id=fields.Many2one('lab.element',string="Elemento")
+	sample_id=fields.Many2one('lab.sample',string="Muestra",ondelete='cascade',required=True)
+	element_id=fields.Many2one('lab.element',string="Elemento", ondelete='cascade',required=True, readonly=True)
 	valor=fields.Float(string="Valor")
 
 	_sql_constraints = [
