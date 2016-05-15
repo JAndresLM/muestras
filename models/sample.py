@@ -45,11 +45,6 @@ class Sample(models.Model):
 						recs = model.search([('name', '=', nombre)])
 						if len(recs)==0:
 							self.env['lab.result'].create({'name':nombre, 'sample_id':r.id,'element_id':e.id})
-							#r.result_ids=model.search([('sample_id', '=', r.id)])
-							#course_osv.write(cr, uid, [course_id], {'student_ids': [(0, 0, {'name': 'John', 'age': 12})]})
-							#self.env['lab.result'].cr.execute("", param1, param2, param3)
-							#self.env['lab.result'].unlink([('name', '=', nombre)])
-
 
 	_sql_constraints = [
 		('name_unique',
