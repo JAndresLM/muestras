@@ -4,7 +4,7 @@
 {
     'name': "Gestión de Boletas y Muestras",
     'summary': """Control de las muestras del laboratorio de analisis agronomicos""",
-    'author': "Andrés López, Mauricio Rodríguez & Carlos Solis",
+    'author': "Andrés López, Mauricio Rodríguez & Carlos Solís",
     'website': "http://www.andmaca.blogspot.com",
     'category': 'Agronomía',
     'version': '8.0.1',

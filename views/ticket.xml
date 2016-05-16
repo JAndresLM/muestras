@@ -33,6 +33,12 @@
 									</tree>
 								</field>
                             </page>
+                            <page string="Comentarios">
+                            	<group string="Otros">
+									<field name="comments"/>
+									<field name="methology"/>
+								</group>
+                            </page>
                         </notebook>
 					</sheet>
 				</form>
@@ -46,6 +52,7 @@
 				<tree string="Lista de Boletas">
 					<field name="name"/>
 					<field name="customer"/>
+					<field name="date"/>
 					<field name="samples_analized" widget="progressbar"/>
 				</tree>
 			</field>

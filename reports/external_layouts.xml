@@ -1,0 +1,46 @@
+<!--
+La pagina debe ser US Letter
+el encabezado es de 35
+el foorter es de 10
+-->
+
+<!--
+REEMPLAZAR EL HEADER
+-->
+<?xml version="1.0"?>
+<t t-name="report.external_layout_header">
+    <div class="header">
+    	<div class="text-right" style="border-bottom: 1px solid black; padding-right:15px; padding-top:15px;">
+            <div class="row" style="margin-top:30px;">
+        	<span t-field="company.university"/> <span t-field="company.campus"/>
+	        </div>
+	        <div class="row">
+	        	<span t-field="company.school"/> <span t-field="company.name"/>
+	        </div>
+	        <div class="row" t-if="company.phone">
+	        	<strong>Telefono: </strong><span t-field="company.phone"/>
+	        </div>
+        </div>
+    </div>
+</t>
+
+<!--
+REEMPLAZAR EL FOOTER
+-->
+<?xml version="1.0"?>
+<t t-name="report.external_layout_footer">
+    <div class="footer">
+        <div class="text-center" style="border-top: 1px solid black;">
+            <t t-if="company.custom_footer">
+                <span t-raw="company.rml_footer"/>
+            </t>
+
+            <ul class="list-inline">
+                <li>Page:</li>
+                <li><span class="page"/></li>
+                <li>/</li>
+                <li><span class="topage"/></li>
+            </ul>
+        </div>
+    </div>      
+</t>

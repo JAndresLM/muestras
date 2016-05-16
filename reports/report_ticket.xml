@@ -56,19 +56,44 @@
                                 border: solid white 1px;
                             }
                             </style>
-                            <table class="table table-condensed table-bordered">
+                            <table class="table table-condensed table-bordered table-responsive">
                                 <tr>
                                     <t t-foreach="m.result_ids" t-as="a">
-                                        <td><strong><span t-field="a.element_id"/></strong></td>
+                                        <td class="cell"><span t-field="a.element_id"/></td>
                                     </t>
                                 </tr>
                                 <tr>
                                     <t t-foreach="m.result_ids" t-as="a">
-                                        <td><span t-field="a.valor"/></td>
+                                        <td class="cell"><span t-field="a.valor"/></td>
                                     </t>
                                 </tr>
                             </table>
+                            <!--<script>
+                                var tds = document.getElementsByClassName('cell');
+                                var tam=Math.round(100/tds.length);
+                                for (var i = 0; i < tds.length; i++){
+                                    tds[i].style.width = 'tam+%';
+                                }
+                            </script>-->
                         </t>
+                        <table id="tcomments" class="table table-condensed">
+                            <tr t-if="doc.comments">
+                                <td width="20%"><strong>Observación:</strong></td>
+                                <td width="80%"><span t-field="doc.comments"/></td>
+                            </tr>
+                            <tr t-if="doc.methology">
+                                <td width="20%"><strong>Metodología:</strong></td>
+                                <td width="80%"><span t-field="doc.methology"/></td>
+                            </tr>
+                        </table>
+                        <style>
+                            #tcomments, #tcomments tr, #tcomments tr td{
+                                border: solid white 1px;
+                            }
+                        </style>
+                        <div style="margin-top:60px;">__________________________________________</div>
+                        <div><span t-field="doc.analyst.company_id.coordinator"/></div>
+                        <div><span t-field="doc.analyst.company_id.title"/></div>
                     </div>
                 </t>
             </t>

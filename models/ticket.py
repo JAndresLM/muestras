@@ -14,10 +14,12 @@ class Ticket(models.Model):
 	discount = fields.Integer(string="Descuento", default=0)
 	cost= fields.Integer(string="Costo Total",compute='_get_cost')
 	paid = fields.Boolean(default=True, string="Pago Realizado")
-	invoice = fields.Char(string="Numero de factura",default=False)
+	invoice = fields.Char(string="Número de factura",default=False)
 	sample_ids = fields.One2many('lab.sample','ticket', string="Muestras")
 	number_samples = fields.Integer(string="Número de Muestras", readonly=True, compute='_number_samples')
 	samples_analized = fields.Float(string="Progreso del Pedido",compute='_samples_analized')
+	comments = fields.Text(string="Observación")
+	methology = fields.Text(string="Metodología")
 
 	@api.depends('number_samples', 'sample_ids')
 	def _samples_analized(self):
