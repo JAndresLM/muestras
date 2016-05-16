@@ -39,8 +39,8 @@ class Sample(models.Model):
 		for r in self:
 			for a in r.analysis_ids:
 				for e in a.elements_ids:
-					nombre="M"+str(r.id)+"E"+str(e.id)
-					if nombre[1].isdigit():
+					nombre="M:"+str(r.name)+"__E:"+str(e.name)
+					if nombre[4].isdigit():
 						model = self.env['lab.result']
 						recs = model.search([('name', '=', nombre)])
 						if len(recs)==0:

@@ -44,6 +44,7 @@
                         <hr/>
                         <h3>Muestras Analizadas</h3>
                         <t t-foreach="doc.sample_ids" t-as="m">
+                            <!-- INFORMACIÓN BASICA DE LA MUESTRA-->
                             <table width="100%" id="tmuestra" class="">
                                 <tr>
                                     <td width="20%"><strong>Codigo: </strong><span t-field="m.name"/></td>
@@ -56,6 +57,7 @@
                                 border: solid white 1px;
                             }
                             </style>
+                            <!-- RESULTADOS DE LA MUESTRA-->
                             <table class="table table-condensed table-bordered table-responsive">
                                 <tr>
                                     <t t-foreach="m.result_ids" t-as="a">
@@ -76,6 +78,7 @@
                                 }
                             </script>-->
                         </t>
+                        <!-- OBSERVACIONES Y METODOLOGIA-->
                         <table id="tcomments" class="table table-condensed">
                             <tr t-if="doc.comments">
                                 <td width="20%"><strong>Observación:</strong></td>
@@ -91,6 +94,7 @@
                                 border: solid white 1px;
                             }
                         </style>
+                        
                         <div style="margin-top:60px;">__________________________________________</div>
                         <div><span t-field="doc.analyst.company_id.coordinator"/></div>
                         <div><span t-field="doc.analyst.company_id.title"/></div>
