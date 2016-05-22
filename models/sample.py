@@ -32,7 +32,15 @@ class Sample(models.Model):
 
 	@api.multi
 	def action_analizado(self):
-		self.state = 'a'
+		for m in self:
+			passto=True
+			for r in m.result_ids:
+				if not r.valor:
+					passto=False
+			if passto==False:
+				return {'warning': {'title': "Aviso",'message': "No se puede cambiar de estado porque aún faltan muestras por analizar",},}
+			else:
+				m.state = 'a'
 
 	@api.multi
 	def insert_results(self):

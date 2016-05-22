@@ -33,7 +33,7 @@
                             	<field name="analysis_ids"/>
                             </page>
                             <page string="Resultados de la muestra">
-								<field name="result_ids">
+								<field name="result_ids" attrs="{'readonly':['|',('state','=','r'),('state','=','a')]}">
 									<tree string="Resultados" editable="bottom">
 										<field name="element_id"/>
 										<field name="valor"/>
