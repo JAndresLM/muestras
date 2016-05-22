@@ -8,6 +8,9 @@
 					<sheet>
 						<group>
 							<field name="name"/>
+							<field name="measure"/>
+							<field name="min_range"/>
+							<field name="max_range"/>
 						</group>
 					</sheet>
 				</form>

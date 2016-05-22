@@ -7,7 +7,7 @@ class Ticket(models.Model):
 	_name = 'lab.ticket'
 	name = fields.Char(string="Código de Boleta", required=True)
 	analyst = fields.Many2one('res.users', string="Funcionario",default=lambda self: self.env.user)
-	date = fields.Date(string="Fecha de ingreso", default=fields.Date.today)
+	date = fields.Datetime(string="Fecha de ingreso", default=fields.Datetime.now)
 	customer = fields.Many2one('customers.customer', string="Cliente", required=True)
 	active = fields.Boolean(default=True, string="Activo")
 	report = fields.Many2one('lab.report',string="Tipo de informe")
@@ -18,8 +18,6 @@ class Ticket(models.Model):
 	sample_ids = fields.One2many('lab.sample','ticket', string="Muestras")
 	number_samples = fields.Integer(string="Número de Muestras", readonly=True, compute='_number_samples')
 	samples_analized = fields.Float(string="Progreso del Pedido",compute='_samples_analized')
-	comments = fields.Text(string="Observación")
-	methology = fields.Text(string="Metodología")
 
 	@api.depends('number_samples', 'sample_ids')
 	def _samples_analized(self):

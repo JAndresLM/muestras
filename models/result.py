@@ -8,7 +8,7 @@ class Result(models.Model):
 	name = fields.Char(string="Código del resultado")
 	sample_id=fields.Many2one('lab.sample',string="Muestra",ondelete='cascade',required=True)
 	element_id=fields.Many2one('lab.element',string="Elemento", ondelete='cascade',required=True, readonly=True)
-	valor=fields.Float(string="Valor")
+	valor=fields.Char(string="Valor")
 
 	_sql_constraints = [
 		('name_unique',

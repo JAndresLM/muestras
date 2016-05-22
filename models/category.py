@@ -5,10 +5,12 @@ from openerp import models, fields
 
 class Category(models.Model):
 	_name = 'lab.category'
-	name = fields.Char(string="Categoría o Tipo de Análisis", required=True)
+	name = fields.Char(string="Tipo de Análisis o muestra", required=True)
+	comments = fields.Text(string="Observación")
+	methology = fields.Text(string="Metodología")
 
 	_sql_constraints = [
 		('name_unique',
 			'UNIQUE(name)',
-			"No se admiten nombres de categorías repetidos"),
+			"No se admiten nombres de tipos repetidos de análisis o muestras"),
 	]

@@ -4,7 +4,7 @@
 			<field name="name">analysis.form</field>
 			<field name="model">lab.analysis</field>
 			<field name="arch" type="xml">
-				<form string="Formulario para analisis">
+				<form string="Formulario para análisis">
 					<sheet>
 						<group>
 							<field name="name"/>
@@ -25,7 +25,7 @@
 			<field name="name">analysis.tree</field>
 			<field name="model">lab.analysis</field>
 			<field name="arch" type="xml">
-				<tree string="Lista de analisis">
+				<tree string="Lista de análisis">
 					<field name="name"/>
 					<field name="category"/>
 				</tree>
@@ -38,10 +38,10 @@
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Agregar el primer analisys</p>
+				<p class="oe_view_nocontent_create">Agregar el primer análisis</p>
 			</field>
 		</record>
 
-		<menuitem id="submenu_analysis" name="Analisis" parent="submenu_laboratory_extras" action="analysis_list_action"/>
+		<menuitem id="submenu_analysis" name="Análisis" parent="submenu_laboratory_extras" action="analysis_list_action"/>
 	</data>
 </openerp>

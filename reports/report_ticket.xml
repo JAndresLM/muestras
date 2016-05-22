@@ -70,13 +70,6 @@
                                     </t>
                                 </tr>
                             </table>
-                            <!--<script>
-                                var tds = document.getElementsByClassName('cell');
-                                var tam=Math.round(100/tds.length);
-                                for (var i = 0; i < tds.length; i++){
-                                    tds[i].style.width = 'tam+%';
-                                }
-                            </script>-->
                         </t>
                         <!-- OBSERVACIONES Y METODOLOGIA-->
                         <table id="tcomments" class="table table-condensed">

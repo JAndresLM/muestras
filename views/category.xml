@@ -4,10 +4,12 @@
 			<field name="name">category.form</field>
 			<field name="model">lab.category</field>
 			<field name="arch" type="xml">
-				<form string="Formulario para categorias de analisis">
+				<form string="Formulario para categorías de análisis y muestras">
 					<sheet>
 						<group>
 							<field name="name"/>
+							<field name="comments"/>
+							<field name="methology"/>
 						</group>
 					</sheet>
 				</form>
@@ -18,7 +20,7 @@
 			<field name="name">category.tree</field>
 			<field name="model">lab.category</field>
 			<field name="arch" type="xml">
-				<tree string="Categorias de analisis">
+				<tree string="Categorías de análisis y muestras">
 					<field name="name"/>
 				</tree>
 			</field>
@@ -30,10 +32,10 @@
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Crear la primera categoria</p>
+				<p class="oe_view_nocontent_create">Crear la primera categoría</p>
 			</field>
 		</record>
 
-		<menuitem id="submenu_category" name="Categorias de Analisis" parent="submenu_laboratory_extras" action="category_list_action"/>
+		<menuitem id="submenu_category" name="Tipos de Análisis y muestras" parent="submenu_laboratory_extras" action="category_list_action"/>
 	</data>
 </openerp>

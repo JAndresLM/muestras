@@ -33,12 +33,6 @@
 									</tree>
 								</field>
                             </page>
-                            <page string="Comentarios">
-                            	<group string="Otros">
-									<field name="comments"/>
-									<field name="methology"/>
-								</group>
-                            </page>
                         </notebook>
 					</sheet>
 				</form>

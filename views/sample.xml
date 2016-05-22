@@ -35,7 +35,6 @@
                             <page string="Resultados de la muestra">
 								<field name="result_ids">
 									<tree string="Resultados" editable="bottom">
-										<field name="name"/>
 										<field name="element_id"/>
 										<field name="valor"/>
 									</tree>
