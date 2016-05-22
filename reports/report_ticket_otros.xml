@@ -1,0 +1,100 @@
+<openerp>
+<data>
+    <report
+        id="report_ticket_otros"
+        model="lab.ticket"
+        string="Reporte de ensayo otros"
+        name="muestras.report_ticket_otros_view"
+        file="muestras.report_ticket_otros"
+        report_type="qweb-pdf" />
+
+    <template id="report_ticket_otros_view">
+        <t t-call="report.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="report.external_layout">
+                    <div class="page">
+                    	<style>
+                            *{
+                                font-size:14px;
+                            }
+                            h3{font-weight:bold;}
+                    	</style>
+                        <h2 class="text-center">REPORTE DE ENSAYO otros</h2>
+                        <hr/>
+                        <table id="tinfo" class="table table-condensed">
+                                <tr>
+                                    <td><strong>Cliente: </strong><span t-field="doc.customer"/></td>
+                                    <td><strong>Teléfono: </strong><span t-field="doc.customer.phone_ids[0].name"/></td>
+                                    <td><strong>Fecha: </strong><span t-field="doc.date"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Provincia: </strong><span t-field="doc.customer.province"/></td>
+                                    <td><strong>Canton: </strong><span t-field="doc.customer.canton"/></td>
+                                    <td><strong>Distrito: </strong><span t-field="doc.customer.district"/></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3"><strong>Otras Señas: </strong><span t-field="doc.customer.address"/></td>
+                                </tr>
+                        </table>
+                        <style>
+                            #tinfo, #tinfo tr, #tinfo tr td{
+                                border: solid white 1px;
+                            }
+                        </style>
+                        <hr/>
+                        <h3>Muestras Analizadas</h3>
+                        <t t-foreach="doc.sample_ids" t-as="m">
+                            <!-- INFORMACIÓN BASICA DE LA MUESTRA-->
+                            <table width="100%" id="tmuestra" class="">
+                                <tr>
+                                    <td width="20%"><strong>Codigo: </strong><span t-field="m.name"/></td>
+                                    <td width="60%"><strong>Identificacion de campo: </strong><span t-field="m.land"/></td>
+                                    <td width="20%"><strong>Cultivo: </strong><span t-field="m.crop"/></td>
+                                </tr>
+                            </table>
+                            <style>
+                            #tmuestra, #tmuestra tr, #tmuestra tr td{
+                                border: solid white 1px;
+                            }
+                            </style>
+                            <!-- RESULTADOS DE LA MUESTRA-->
+                            <table class="table table-condensed table-bordered table-responsive">
+                                <tr>
+                                    <t t-foreach="m.result_ids" t-as="a">
+                                        <td class="cell"><span t-field="a.element_id"/></td>
+                                    </t>
+                                </tr>
+                                <tr>
+                                    <t t-foreach="m.result_ids" t-as="a">
+                                        <td class="cell"><span t-field="a.valor"/></td>
+                                    </t>
+                                </tr>
+                            </table>
+                        </t>
+                        <!-- OBSERVACIONES Y METODOLOGIA-->
+                        <!--<table id="tcomments" class="table table-condensed">
+                            <tr t-if="doc.comments">
+                                <td width="20%"><strong>Observación:</strong></td>
+                                <td width="80%"><span t-field="doc.comments"/></td>
+                            </tr>
+                            <tr t-if="doc.methology">
+                                <td width="20%"><strong>Metodología:</strong></td>
+                                <td width="80%"><span t-field="doc.methology"/></td>
+                            </tr>
+                        </table>
+                        <style>
+                            #tcomments, #tcomments tr, #tcomments tr td{
+                                border: solid white 1px;
+                            }
+                        </style>-->
+                        
+                        <div style="margin-top:60px;">__________________________________________</div>
+                        <div><span t-field="doc.analyst.company_id.coordinator"/></div>
+                        <div><span t-field="doc.analyst.company_id.title"/></div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</data>
+</openerp>

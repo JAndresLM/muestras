@@ -29,7 +29,7 @@
 							</group>
 						</group>
 						<notebook>
-                            <page string="Analisis Requeridos">
+                            <page string="Análisis Requeridos">
                             	<field name="analysis_ids"/>
                             </page>
                             <page string="Resultados de la muestra">

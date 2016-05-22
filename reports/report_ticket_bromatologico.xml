@@ -1,25 +1,25 @@
 <openerp>
 <data>
     <report
-        id="report_ticket"
+        id="report_ticket_bromatologico"
         model="lab.ticket"
-        string="Informe de Boleta"
-        name="muestras.report_ticket_view"
-        file="muestras.report_ticket"
+        string="Reporte de ensayo bromatologico"
+        name="muestras.report_ticket_bromatologico_view"
+        file="muestras.report_ticket_bromatologico"
         report_type="qweb-pdf" />
 
-    <template id="report_ticket_view">
+    <template id="report_ticket_bromatologico_view">
         <t t-call="report.html_container">
             <t t-foreach="docs" t-as="doc">
                 <t t-call="report.external_layout">
                     <div class="page">
-                    	<style>
+                        <style>
                             *{
                                 font-size:14px;
                             }
                             h3{font-weight:bold;}
-                    	</style>
-                        <h2 class="text-center">REPORTE DE MUESTRAS</h2>
+                        </style>
+                        <h2 class="text-center">REPORTE DE ENSAYO bromatologico</h2>
                         <hr/>
                         <table id="tinfo" class="table table-condensed">
                                 <tr>
@@ -72,7 +72,7 @@
                             </table>
                         </t>
                         <!-- OBSERVACIONES Y METODOLOGIA-->
-                        <table id="tcomments" class="table table-condensed">
+                        <!--<table id="tcomments" class="table table-condensed">
                             <tr t-if="doc.comments">
                                 <td width="20%"><strong>Observación:</strong></td>
                                 <td width="80%"><span t-field="doc.comments"/></td>
@@ -86,7 +86,7 @@
                             #tcomments, #tcomments tr, #tcomments tr td{
                                 border: solid white 1px;
                             }
-                        </style>
+                        </style>-->
                         
                         <div style="margin-top:60px;">__________________________________________</div>
                         <div><span t-field="doc.analyst.company_id.coordinator"/></div>

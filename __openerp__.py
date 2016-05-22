@@ -18,7 +18,11 @@
         'views/category.xml',
         'views/analysis.xml',
         'views/element.xml',
-        'reports/report_ticket.xml',
+        'reports/report_ticket_comprobante.xml',
+        'reports/report_ticket_foliar.xml',
+        'reports/report_ticket_suelos.xml',
+        'reports/report_ticket_bromatologico.xml',
+        'reports/report_ticket_otros.xml',
     ],
     'demo': [
         'demo.xml',
