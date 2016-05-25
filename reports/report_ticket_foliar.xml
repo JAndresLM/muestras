@@ -21,73 +21,143 @@
                     	</style>
                         <h2 class="text-center">REPORTE DE ENSAYO FOLIAR</h2>
                         <hr/>
+                        <style>
+                            #tinfo, #tinfo tr, #tinfo tr td{
+                                border: solid white 1px;
+                                overflow:hidden;
+                            }
+                        </style>
                         <table id="tinfo" class="table table-condensed">
                                 <tr>
-                                    <td><strong>Cliente: </strong><span t-field="doc.customer"/></td>
-                                    <td><strong>Teléfono: </strong><span t-field="doc.customer.phone_ids[0].name"/></td>
-                                    <td><strong>Fecha: </strong><span t-field="doc.date"/></td>
+                                    <td width="33%"><strong>Cliente: </strong><span t-field="doc.customer"/></td>
+                                    <td width="33%"><strong>Teléfono: </strong><span t-field="doc.customer.phone_ids[0].name"/></td>
+                                    <td width="33%"><strong>Fecha: </strong><span t-field="doc.date"/></td>
                                 </tr>
                                 <tr>
-                                    <td><strong>Provincia: </strong><span t-field="doc.customer.province"/></td>
-                                    <td><strong>Canton: </strong><span t-field="doc.customer.canton"/></td>
-                                    <td><strong>Distrito: </strong><span t-field="doc.customer.district"/></td>
+                                    <td width="33%"><strong>Provincia: </strong><span t-field="doc.customer.province"/></td>
+                                    <td width="33%"><strong>Canton: </strong><span t-field="doc.customer.canton"/></td>
+                                    <td width="33%"><strong>Distrito: </strong><span t-field="doc.customer.district"/></td>
                                 </tr>
                                 <tr>
                                     <td colspan="3"><strong>Otras Señas: </strong><span t-field="doc.customer.address"/></td>
                                 </tr>
                         </table>
+                        <hr/>
+                        <!-- INFORMACIÓN Y RESULTADOS DE LAS MUESTRAS-->
                         <style>
-                            #tinfo, #tinfo tr, #tinfo tr td{
-                                border: solid white 1px;
+                            #tm, #tm th, #tm td {
+                                border: 1px solid black;
+                                border-collapse: collapse;
+                                overflow:hidden;
+                                text-align:center;
+                            }
+
+                            #tm td, #tm th{
+                                padding:5px;
                             }
                         </style>
-                        <hr/>
-                        <h3>Muestras Analizadas</h3>
-                        <t t-foreach="doc.sample_ids" t-as="m">
-                            <!-- INFORMACIÓN BASICA DE LA MUESTRA-->
-                            <table width="100%" id="tmuestra" class="">
+                        <table id="tm" class="" width="98%">
+                            <thead>
                                 <tr>
-                                    <td width="20%"><strong>Codigo: </strong><span t-field="m.name"/></td>
-                                    <td width="60%"><strong>Identificacion de campo: </strong><span t-field="m.land"/></td>
-                                    <td width="20%"><strong>Cultivo: </strong><span t-field="m.crop"/></td>
+                                  <th colspan="2"></th>
+                                  <th colspan="5">%</th>
+                                  <th colspan="4">mg/L</th>
                                 </tr>
-                            </table>
-                            <style>
-                            #tmuestra, #tmuestra tr, #tmuestra tr td{
-                                border: solid white 1px;
-                            }
-                            </style>
-                            <!-- RESULTADOS DE LA MUESTRA-->
-                            <table class="table table-condensed table-bordered table-responsive">
                                 <tr>
-                                    <t t-foreach="m.result_ids" t-as="a">
-                                        <td class="cell"><span t-field="a.element_id"/></td>
+                                  <th width="10%">N° Lab</th>
+                                  <th width="18%">Identificación de campo</th>
+                                  <th width="8%">N-total</th>
+                                  <th width="8%">K</th>
+                                  <th width="8%">Ca</th>
+                                  <th width="8%">Mg</th>
+                                  <th width="8%">P</th>
+                                  <th width="8%">Cu</th>
+                                  <th width="8%">Mn</th>
+                                  <th width="8%">Fe</th>
+                                  <th width="8%">Zn</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="doc.sample_ids" t-as="m">
+                                    <t t-if="m.name[0]=='F'">
+                                        <tr >
+                                            <td>
+                                                <span t-field="m.name"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="m.land"/>
+                                            </td>
+                                            <td>
+                                                <t t-foreach="m.result_ids" t-as="a">
+                                                    <t t-if="a.element_id.name=='N-total'"><span t-field="a.valor"/></t>
+                                                </t>
+                                            </td>
+                                            <td>
+                                                <t t-foreach="m.result_ids" t-as="a">
+                                                    <t t-if="a.element_id.name=='K'"><span t-field="a.valor"/></t>
+                                                </t>
+                                            </td>
+                                            <td>
+                                                <t t-foreach="m.result_ids" t-as="a">
+                                                    <t t-if="a.element_id.name=='Ca'"><span t-field="a.valor"/></t>
+                                                </t>
+                                            </td>
+                                            <td>
+                                                <t t-foreach="m.result_ids" t-as="a">
+                                                    <t t-if="a.element_id.name=='Mg'"><span t-field="a.valor"/></t>
+                                                </t>
+                                            </td>
+                                            <td>
+                                                <t t-foreach="m.result_ids" t-as="a">
+                                                    <t t-if="a.element_id.name=='P'"><span t-field="a.valor"/></t>
+                                                </t>
+                                            </td>
+                                            <td>
+                                                <t t-foreach="m.result_ids" t-as="a">
+                                                    <t t-if="a.element_id.name=='Cu'"><span t-field="a.valor"/></t>
+                                                </t>
+                                            </td>
+                                            <td>
+                                                <t t-foreach="m.result_ids" t-as="a">
+                                                    <t t-if="a.element_id.name=='Mn'"><span t-field="a.valor"/></t>
+                                                </t>
+                                            </td>
+                                            <td>
+                                                <t t-foreach="m.result_ids" t-as="a">
+                                                    <t t-if="a.element_id.name=='Fe'"><span t-field="a.valor"/></t>
+                                                </t>
+                                            </td>
+                                            <td>
+                                                <t t-foreach="m.result_ids" t-as="a">
+                                                    <t t-if="a.element_id.name=='Zn'"><span t-field="a.valor"/></t>
+                                                </t>
+                                            </td>
+                                        </tr>
                                     </t>
-                                </tr>
+                                </t>
+                            </tbody>
+                            <tfoot>
                                 <tr>
-                                    <t t-foreach="m.result_ids" t-as="a">
-                                        <td class="cell"><span t-field="a.valor"/></td>
-                                    </t>
                                 </tr>
-                            </table>
-                        </t>
-                        <!-- OBSERVACIONES Y METODOLOGIA-->
-                        <!--<table id="tcomments" class="table table-condensed">
-                            <tr t-if="doc.comments">
-                                <td width="20%"><strong>Observación:</strong></td>
-                                <td width="80%"><span t-field="doc.comments"/></td>
-                            </tr>
-                            <tr t-if="doc.methology">
-                                <td width="20%"><strong>Metodología:</strong></td>
-                                <td width="80%"><span t-field="doc.methology"/></td>
-                            </tr>
+                            </tfoot>
                         </table>
+                        <br/>
+                        <!-- OBSERVACIONES Y METODOLOGIA-->
                         <style>
                             #tcomments, #tcomments tr, #tcomments tr td{
                                 border: solid white 1px;
                             }
-                        </style>-->
-                        
+                        </style>
+                        <table id="tcomments" class="table table-condensed" style="margin-top:15px;">
+                            <tr t-if="doc.sample_ids[0].category.comments">
+                                <td width="20%"><strong>Observación:</strong></td>
+                                <td width="80%"><span t-field="doc.sample_ids[0].category.methology"/></td>
+                            </tr>
+                            <tr t-if="doc.sample_ids[0].category.methology">
+                                <td width="20%"><strong>Metodología:</strong></td>
+                                <td width="80%"><span t-field="doc.sample_ids[0].category.methology"/></td>
+                            </tr>
+                        </table>
                         <div style="margin-top:60px;">__________________________________________</div>
                         <div><span t-field="doc.analyst.company_id.coordinator"/></div>
                         <div><span t-field="doc.analyst.company_id.title"/></div>
