@@ -17,33 +17,61 @@
                             *{
                                 font-size:14px;
                             }
-                            h3{font-weight:bold;}
+
+                            h3{
+                                font-weight:bold;
+                            }
+
+                            hr{
+                                border:solid black 1px;
+                            }
                     	</style>
                         <h2 class="text-center">REPORTE DE ENSAYO FOLIAR</h2>
                         <hr/>
+                        <!-- INFORMACION DEL CLIENTE-->
                         <style>
-                            #tinfo, #tinfo tr, #tinfo tr td{
+                            #tinfo, #tinfo tr, #tinfo tr td, #tdir, #tdir tr, #tdir tr td {
                                 border: solid white 1px;
                                 overflow:hidden;
                             }
+
+                            #tinfo td, #tdir td{
+                                padding:5px;
+                            }
                         </style>
-                        <table id="tinfo" class="table table-condensed">
+                        <table id="tinfo" class="" width="100%">
                                 <tr>
-                                    <td width="33%"><strong>Cliente: </strong><span t-field="doc.customer"/></td>
-                                    <td width="33%"><strong>Teléfono: </strong><span t-field="doc.customer.phone_ids[0].name"/></td>
-                                    <td width="33%"><strong>Fecha: </strong><span t-field="doc.date"/></td>
-                                </tr>
-                                <tr>
-                                    <td width="33%"><strong>Provincia: </strong><span t-field="doc.customer.province"/></td>
-                                    <td width="33%"><strong>Canton: </strong><span t-field="doc.customer.canton"/></td>
-                                    <td width="33%"><strong>Distrito: </strong><span t-field="doc.customer.district"/></td>
-                                </tr>
-                                <tr>
-                                    <td colspan="3"><strong>Otras Señas: </strong><span t-field="doc.customer.address"/></td>
+                                    <td width="50%">
+                                        <strong>Cliente: </strong>
+                                        <span t-field="doc.customer"/>
+                                    </td>
+                                    <td width="25%">
+                                        <strong>Teléfono: </strong>
+                                        <t t-if="doc.customer.phone_ids">
+                                            <span t-field="doc.customer.phone_ids[0].name"/>
+                                        </t>
+                                    </td>
+                                    <td width="25%">
+                                        <strong>Fecha: </strong>
+                                        <span t-field="doc.date" t-field-options='{"format": "dd/MM/y"}'/>
+                                    </td>
                                 </tr>
                         </table>
+                        <!-- DIRECCION DEL CLIENTE-->
+                        <table id="tdir" width="100%">
+                            <tr>
+                                <td width="50%"><strong>Provincia: </strong><span t-field="doc.customer.province"/></td>
+                                <td width="25%"><strong>Canton: </strong><span t-field="doc.customer.canton"/></td>
+                                <td width="25%"><strong>Distrito: </strong><span t-field="doc.customer.district"/></td>
+                            </tr>
+                            <tr>
+                                <td width="100%" colspan="3">
+                                    <strong>Otras Señas: </strong><span t-field="doc.customer.address"/>
+                                </td>
+                            </tr>
+                        </table>
                         <hr/>
-                        <!-- INFORMACIÓN Y RESULTADOS DE LAS MUESTRAS-->
+                        <!-- RESULTADOS DE LAS MUESTRAS-->
                         <style>
                             #tm, #tm th, #tm td {
                                 border: 1px solid black;
@@ -56,7 +84,7 @@
                                 padding:5px;
                             }
                         </style>
-                        <table id="tm" class="" width="98%">
+                        <table id="tm" class="" width="98%" style="margin-top:15px;margin-bottom:15px;">
                             <thead>
                                 <tr>
                                   <th colspan="2"></th>
@@ -136,28 +164,39 @@
                                     </t>
                                 </t>
                             </tbody>
-                            <tfoot>
-                                <tr>
-                                </tr>
-                            </tfoot>
+                            <!--<tfoot><tr></tr></tfoot>-->
                         </table>
-                        <br/>
                         <!-- OBSERVACIONES Y METODOLOGIA-->
                         <style>
                             #tcomments, #tcomments tr, #tcomments tr td{
                                 border: solid white 1px;
                             }
                         </style>
-                        <table id="tcomments" class="table table-condensed" style="margin-top:15px;">
-                            <tr t-if="doc.sample_ids[0].category.comments">
+                        <table id="tcomments" class="table table-condensed" style="margin-top:25px;">
+                            <tr><!--t-if="doc.sample_ids[0].category.comments"-->
                                 <td width="20%"><strong>Observación:</strong></td>
-                                <td width="80%"><span t-field="doc.sample_ids[0].category.methology"/></td>
+                                <td width="80%">
+                                    <!--<span t-field="doc.sample_ids[0].category.methology"/>-->
+                                    <ul>
+                                      <li>Las unidades estan expresadas en base seca.</li>
+                                      <li>Muestras tomadas por el interesado.</li>
+                                      <li>Los resultados de este ensayo reflejan unicamente a la muestra entregada en el laboratorio por el interesado.</li>
+                                    </ul>
+                                </td>
                             </tr>
-                            <tr t-if="doc.sample_ids[0].category.methology">
+                            <tr><!--t-if="doc.sample_ids[0].category.methology"-->
                                 <td width="20%"><strong>Metodología:</strong></td>
-                                <td width="80%"><span t-field="doc.sample_ids[0].category.methology"/></td>
+                                <td width="80%">
+                                    <!--<span t-field="doc.sample_ids[0].category.methology"/>-->
+                                    <ul>
+                                      <li>Procedimiento nitrógeno por método Dumas.</li>
+                                      <li>Ca, Mg, K en foliares por combustión seca y determinación por absorción atómica.</li>
+                                      <li>Determinación de P por espectrofotometría visible</li>
+                                    </ul>
+                                </td>
                             </tr>
                         </table>
+                        <!-- DATOS DEL COORDINADOR DEL LABORATORIO-->
                         <div style="margin-top:60px;">__________________________________________</div>
                         <div><span t-field="doc.analyst.company_id.coordinator"/></div>
                         <div><span t-field="doc.analyst.company_id.title"/></div>
