@@ -6,7 +6,7 @@ from openerp import models, fields
 class Element(models.Model):
 	_name = 'lab.element'
 	name = fields.Char(string="Nombre del elemento", required=True)
-	measure = fields.Many2one('lab.measure', ondelete='cascade',string="Medida")
+	measure = fields.Many2one('lab.measure', ondelete='cascade',string="Unidad Expresada")
 	min_range = fields.Char(string="Rango mínimo")
 	max_range = fields.Char(string="Rango máximo")
 

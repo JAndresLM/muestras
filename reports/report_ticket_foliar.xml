@@ -83,6 +83,10 @@
                             #tm td, #tm th{
                                 padding:5px;
                             }
+
+                            #tm{
+                                border bottom: solid black 1px;
+                            }
                         </style>
                         <table id="tm" class="" width="98%" style="margin-top:15px;margin-bottom:15px;">
                             <thead>
@@ -92,17 +96,17 @@
                                   <th colspan="4">mg/L</th>
                                 </tr>
                                 <tr>
-                                  <th width="10%">N° Lab</th>
-                                  <th width="18%">Identificación de campo</th>
+                                  <th width="8%">N° Lab</th>
+                                  <th width="28%">Identificación de campo</th>
                                   <th width="8%">N-total</th>
-                                  <th width="8%">K</th>
-                                  <th width="8%">Ca</th>
-                                  <th width="8%">Mg</th>
-                                  <th width="8%">P</th>
-                                  <th width="8%">Cu</th>
-                                  <th width="8%">Mn</th>
-                                  <th width="8%">Fe</th>
-                                  <th width="8%">Zn</th>
+                                  <th width="7%">K</th>
+                                  <th width="7%">Ca</th>
+                                  <th width="7%">Mg</th>
+                                  <th width="7%">P</th>
+                                  <th width="7%">Cu</th>
+                                  <th width="7%">Mn</th>
+                                  <th width="7%">Fe</th>
+                                  <th width="7%">Zn</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -164,7 +168,7 @@
                                     </t>
                                 </t>
                             </tbody>
-                            <!--<tfoot><tr></tr></tfoot>-->
+                            <tfoot><tr></tr></tfoot>
                         </table>
                         <!-- OBSERVACIONES Y METODOLOGIA-->
                         <style>

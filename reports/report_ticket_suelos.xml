@@ -13,81 +13,231 @@
             <t t-foreach="docs" t-as="doc">
                 <t t-call="report.external_layout">
                     <div class="page">
-                    	<style>
+                        <style>
                             *{
                                 font-size:14px;
                             }
-                            h3{font-weight:bold;}
-                    	</style>
-                        <h2 class="text-center">REPORTE DE ENSAYO suelos</h2>
-                        <hr/>
-                        <table id="tinfo" class="table table-condensed">
-                                <tr>
-                                    <td><strong>Cliente: </strong><span t-field="doc.customer"/></td>
-                                    <td><strong>Teléfono: </strong><span t-field="doc.customer.phone_ids[0].name"/></td>
-                                    <td><strong>Fecha: </strong><span t-field="doc.date"/></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Provincia: </strong><span t-field="doc.customer.province"/></td>
-                                    <td><strong>Canton: </strong><span t-field="doc.customer.canton"/></td>
-                                    <td><strong>Distrito: </strong><span t-field="doc.customer.district"/></td>
-                                </tr>
-                                <tr>
-                                    <td colspan="3"><strong>Otras Señas: </strong><span t-field="doc.customer.address"/></td>
-                                </tr>
-                        </table>
-                        <style>
-                            #tinfo, #tinfo tr, #tinfo tr td{
-                                border: solid white 1px;
+
+                            h3{
+                                font-weight:bold;
+                            }
+
+                            hr{
+                                border:solid black 1px;
                             }
                         </style>
+                        <h2 class="text-center">REPORTE DE ENSAYO SUELOS</h2>
                         <hr/>
-                        <h3>Muestras Analizadas</h3>
-                        <t t-foreach="doc.sample_ids" t-as="m">
-                            <!-- INFORMACIÓN BASICA DE LA MUESTRA-->
-                            <table width="100%" id="tmuestra" class="">
-                                <tr>
-                                    <td width="20%"><strong>Codigo: </strong><span t-field="m.name"/></td>
-                                    <td width="60%"><strong>Identificacion de campo: </strong><span t-field="m.land"/></td>
-                                    <td width="20%"><strong>Cultivo: </strong><span t-field="m.crop"/></td>
-                                </tr>
-                            </table>
-                            <style>
-                            #tmuestra, #tmuestra tr, #tmuestra tr td{
+                        <!-- INFORMACION DEL CLIENTE-->
+                        <style>
+                            #tinfo, #tinfo tr, #tinfo tr td, #tdir, #tdir tr, #tdir tr td {
                                 border: solid white 1px;
+                                overflow:hidden;
                             }
-                            </style>
-                            <!-- RESULTADOS DE LA MUESTRA-->
-                            <table class="table table-condensed table-bordered table-responsive">
+
+                            #tinfo td, #tdir td{
+                                padding:5px;
+                            }
+                        </style>
+                        <table id="tinfo" class="" width="100%">
                                 <tr>
-                                    <t t-foreach="m.result_ids" t-as="a">
-                                        <td class="cell"><span t-field="a.element_id"/></td>
-                                    </t>
+                                    <td width="50%">
+                                        <strong>Cliente: </strong>
+                                        <span t-field="doc.customer"/>
+                                    </td>
+                                    <td width="25%">
+                                        <strong>Teléfono: </strong>
+                                        <t t-if="doc.customer.phone_ids">
+                                            <span t-field="doc.customer.phone_ids[0].name"/>
+                                        </t>
+                                    </td>
+                                    <td width="25%">
+                                        <strong>Fecha: </strong>
+                                        <span t-field="doc.date" t-field-options='{"format": "dd/MM/y"}'/>
+                                    </td>
                                 </tr>
-                                <tr>
-                                    <t t-foreach="m.result_ids" t-as="a">
-                                        <td class="cell"><span t-field="a.valor"/></td>
-                                    </t>
-                                </tr>
-                            </table>
-                        </t>
-                        <!-- OBSERVACIONES Y METODOLOGIA-->
-                        <!--<table id="tcomments" class="table table-condensed">
-                            <tr t-if="doc.comments">
-                                <td width="20%"><strong>Observación:</strong></td>
-                                <td width="80%"><span t-field="doc.comments"/></td>
+                        </table>
+                        <!-- DIRECCION DEL CLIENTE-->
+                        <table id="tdir" width="100%">
+                            <tr>
+                                <td width="50%"><strong>Provincia: </strong><span t-field="doc.customer.province"/></td>
+                                <td width="25%"><strong>Canton: </strong><span t-field="doc.customer.canton"/></td>
+                                <td width="25%"><strong>Distrito: </strong><span t-field="doc.customer.district"/></td>
                             </tr>
-                            <tr t-if="doc.methology">
-                                <td width="20%"><strong>Metodología:</strong></td>
-                                <td width="80%"><span t-field="doc.methology"/></td>
+                            <tr>
+                                <td width="100%" colspan="3">
+                                    <strong>Otras Señas: </strong><span t-field="doc.customer.address"/>
+                                </td>
                             </tr>
                         </table>
+                        <hr/>
+                        <!-- RESULTADOS DE LAS MUESTRAS-->
+                        <style>
+                            #tm, #tm tr, #tm tr th, #tm tr td {
+                                border: 1px solid black;
+                                border-collapse: collapse;
+                                overflow:hidden;
+                                text-align:center;
+                            }
+
+                            #tm td, #tm th{
+                                padding:5px;
+                            }
+
+                            tfoot tr, tfoot tr td{
+                                height:5px;
+                                font-size:10px;
+                                padding:0px;
+                            }
+
+                            tfoot tr:first-child td:first-child {
+                                font-size:14px;
+                            }
+                        </style>
+                        <table id="tm" class="" width="98%" style="margin-top:15px;margin-bottom:15px;">
+                            <thead>
+                                <tr>
+                                  <th colspan="3"></th>
+                                  <th colspan="4">cmol(+)/L</th>
+                                  <th colspan="5">mg/L</th>
+                                </tr>
+                                <tr>
+                                  <th width="8%">N° Lab</th>
+                                  <th width="30%">Identificación de campo</th>
+                                  <th width="6%">pH</th>
+                                  <th width="8%">Acidez ext.</th>
+                                  <th width="6%">Ca</th>
+                                  <th width="6%">Mg</th>
+                                  <th width="6%">K</th>
+                                  <th width="6%">Cu</th>
+                                  <th width="6%">Mn</th>
+                                  <th width="6%">Fe</th>
+                                  <th width="6%">Zn</th>
+                                  <th width="6%">P</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="doc.sample_ids" t-as="m">
+                                    <t t-if="m.name[0]=='S'">
+                                        <tr >
+                                            <td>
+                                                <span t-field="m.name"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="m.land"/>
+                                            </td>
+                                            <td>
+                                                <t t-foreach="m.result_ids" t-as="a">
+                                                    <t t-if="a.element_id.name=='pH'"><span t-field="a.valor"/></t>
+                                                </t>
+                                            </td>
+                                            <td>
+                                                <t t-foreach="m.result_ids" t-as="a">
+                                                    <t t-if="a.element_id.name=='Acidez ext.'"><span t-field="a.valor"/></t>
+                                                </t>
+                                            </td>
+                                            <td>
+                                                <t t-foreach="m.result_ids" t-as="a">
+                                                    <t t-if="a.element_id.name=='Ca'"><span t-field="a.valor"/></t>
+                                                </t>
+                                            </td>
+                                            <td>
+                                                <t t-foreach="m.result_ids" t-as="a">
+                                                    <t t-if="a.element_id.name=='Mg'"><span t-field="a.valor"/></t>
+                                                </t>
+                                            </td>
+                                            <td>
+                                                <t t-foreach="m.result_ids" t-as="a">
+                                                    <t t-if="a.element_id.name=='K'"><span t-field="a.valor"/></t>
+                                                </t>
+                                            </td>
+                                            <td>
+                                                <t t-foreach="m.result_ids" t-as="a">
+                                                    <t t-if="a.element_id.name=='Cu'"><span t-field="a.valor"/></t>
+                                                </t>
+                                            </td>
+                                            <td>
+                                                <t t-foreach="m.result_ids" t-as="a">
+                                                    <t t-if="a.element_id.name=='Mn'"><span t-field="a.valor"/></t>
+                                                </t>
+                                            </td>
+                                            <td>
+                                                <t t-foreach="m.result_ids" t-as="a">
+                                                    <t t-if="a.element_id.name=='Fe'"><span t-field="a.valor"/></t>
+                                                </t>
+                                            </td>
+                                            <td>
+                                                <t t-foreach="m.result_ids" t-as="a">
+                                                    <t t-if="a.element_id.name=='Zn'"><span t-field="a.valor"/></t>
+                                                </t>
+                                            </td>
+                                            <td>
+                                                <t t-foreach="m.result_ids" t-as="a">
+                                                    <t t-if="a.element_id.name=='P'"><span t-field="a.valor"/></t>
+                                                </t>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </t>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td rowspan="2" colspan="2">Rangos Medios</td>
+                                    <td>5,5</td>
+                                    <td>0,5</td>
+                                    <td>4,0</td>
+                                    <td>1,0</td>
+                                    <td>0,2</td>
+                                    <td>1,0</td>
+                                    <td>5,0</td>
+                                    <td>5,0</td>
+                                    <td>3,0</td>
+                                    <td>10,0</td>
+                                </tr>
+                                <tr>
+                                    <td>7,0</td>
+                                    <td>0,5</td>
+                                    <td>15,0</td>
+                                    <td>6,0</td>
+                                    <td>0,8</td>
+                                    <td>20,0</td>
+                                    <td>50,0</td>
+                                    <td>50,0</td>
+                                    <td>10,0</td>
+                                    <td>40,0</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        <!-- OBSERVACIONES Y METODOLOGIA-->
                         <style>
                             #tcomments, #tcomments tr, #tcomments tr td{
                                 border: solid white 1px;
                             }
-                        </style>-->
-                        
+                        </style>
+                        <table id="tcomments" class="table table-condensed" style="margin-top:25px;">
+                            <tr><!--t-if="doc.sample_ids[0].category.comments"-->
+                                <td width="20%"><strong>Observación:</strong></td>
+                                <td width="80%">
+                                    <!--<span t-field="doc.sample_ids[0].category.methology"/>-->
+                                    <ul>
+                                      <li>Muestras tomadas por el interesado.</li>
+                                      <li>Los resultados de este ensayo reflejan unicamente a la muestra entregada en el laboratorio por el interesado.</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr><!--t-if="doc.sample_ids[0].category.methology"-->
+                                <td width="20%"><strong>Metodología:</strong></td>
+                                <td width="80%">
+                                    <!--<span t-field="doc.sample_ids[0].category.methology"/>-->
+                                    <ul>
+                                      <li>K, P y menores extraídos con Olsen Modificado.</li>
+                                      <li>Ca, Mg y Acidez extractable extraídos con KCI.</li>
+                                      <li>pH en agua.</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </table>
+                        <!-- DATOS DEL COORDINADOR DEL LABORATORIO-->
                         <div style="margin-top:60px;">__________________________________________</div>
                         <div><span t-field="doc.analyst.company_id.coordinator"/></div>
                         <div><span t-field="doc.analyst.company_id.title"/></div>
