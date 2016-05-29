@@ -6,7 +6,7 @@
         string="Reporte de ensayo foliar"
         name="muestras.report_ticket_foliar_view"
         file="muestras.report_ticket_foliar"
-        report_type="qweb-pdf" />
+        report_type="qweb-pdf"/>
 
     <template id="report_ticket_foliar_view">
         <t t-call="report.html_container">
@@ -85,7 +85,7 @@
                             }
 
                             #tm{
-                                border bottom: solid black 1px;
+                                border-bottom: solid black 1px;
                             }
                         </style>
                         <table id="tm" class="" width="98%" style="margin-top:15px;margin-bottom:15px;">
@@ -168,7 +168,7 @@
                                     </t>
                                 </t>
                             </tbody>
-                            <tfoot><tr></tr></tfoot>
+                            <!--<tfoot><tr></tr></tfoot>-->
                         </table>
                         <!-- OBSERVACIONES Y METODOLOGIA-->
                         <style>
@@ -176,7 +176,7 @@
                                 border: solid white 1px;
                             }
                         </style>
-                        <table id="tcomments" class="table table-condensed" style="margin-top:25px;">
+                        <table id="tcomments" class="" style="margin-top:25px;" width="100%">
                             <tr><!--t-if="doc.sample_ids[0].category.comments"-->
                                 <td width="20%"><strong>Observación:</strong></td>
                                 <td width="80%">

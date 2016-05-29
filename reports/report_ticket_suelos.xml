@@ -6,7 +6,7 @@
         string="Reporte de ensayo suelos"
         name="muestras.report_ticket_suelos_view"
         file="muestras.report_ticket_suelos"
-        report_type="qweb-pdf" />
+        report_type="qweb-pdf"/>
 
     <template id="report_ticket_suelos_view">
         <t t-call="report.html_container">
@@ -82,6 +82,10 @@
 
                             #tm td, #tm th{
                                 padding:5px;
+                            }
+
+                            #tm{
+                                border-bottom: solid black 1px;
                             }
 
                             tfoot tr, tfoot tr td{
@@ -214,7 +218,7 @@
                                 border: solid white 1px;
                             }
                         </style>
-                        <table id="tcomments" class="table table-condensed" style="margin-top:25px;">
+                        <table id="tcomments" class="" style="margin-top:25px;" width="100%">
                             <tr><!--t-if="doc.sample_ids[0].category.comments"-->
                                 <td width="20%"><strong>Observación:</strong></td>
                                 <td width="80%">

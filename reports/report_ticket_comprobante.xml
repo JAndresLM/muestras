@@ -6,7 +6,7 @@
         string="Comprobante de recibo de muestras"
         name="muestras.report_ticket_comprobante_view"
         file="muestras.report_ticket_comprobante"
-        report_type="qweb-pdf" />
+        report_type="qweb-pdf"/>
 
     <template id="report_ticket_comprobante_view">
         <t t-call="report.html_container">
