@@ -120,14 +120,16 @@
                                     </tr>
                                     <t t-foreach="doc.sample_ids" t-as="m">
                                         <tr>
+                                            <t t-set="price" t-value="0"/>
                                             <td><span t-field="m.name"/></td>
                                             <td><span t-field="m.category"/></td>
                                             <td>
                                                 <t t-foreach="m.analysis_ids" t-as="a">
                                                     <span t-field="a.name"/>,
+                                                    <t t-set="price" t-value="price + a.cost"/>
                                                 </t>
                                             </td>
-                                            <td> </td>
+                                            <td><t t-esc="price"/></td>
                                         </tr>
                                     </t>
                                     <tr style="font-size:18px">
