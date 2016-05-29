@@ -14,14 +14,23 @@
                 <t t-call="report.external_layout">
                     <div class="page">
                     	<style>
-                            #cprincipal{
+                            #cPrincipal{
                                 width:100%;
-                                border:solid black 1px;
+                                border:solid #00457C 2px;
                                 padding:10px;
+                                color:#00457C;
+                            }
+
+                            #cPrincipal strong, #cPrincipal table td, #cPrincipal p, #cPrincipal span{
+                                color:#00457C;
+                            }
+
+                            #cPrincipal #cHeader #cod strong{
+                                color:red;
                             }
 
                             #tInfo, #tInfo tr, #tInfo tr td{
-                                border: 1px solid black;
+                                border: 1px solid #00457C;
                                 border-collapse: collapse;
                                 overflow:hidden;
                                 text-align:center;
@@ -31,23 +40,42 @@
                                 overflow:hidden;
                             }
                         </style>
-                        <div id="cPrincipal">
-                            <div id="cHeader" style="border-bottom:solid red 4px;">
-                                <table id="tHeader" width="100%" style="margin-bottom:7px;">
+                        <div id="cPrincipal" width="100%">
+                            <div id="cHeader" style="border-bottom:solid red 4px;" width="100%" height="100px">
+                                <table id="tHeader" width="100%">
                                     <tr>
-                                        <td style="font-size:20px" width="50%">
-                                            <strong>Laboratorio de Analisis Agronomicos</strong>
+                                        <td style="font-size:18px" width="50%">
+                                            <p>
+                                                <br/>
+                                                <strong style="font-size:20px">
+                                                     <span t-if="doc.analyst.company_id.name" 
+                                                        t-field="doc.analyst.company_id.name"/>
+                                                </strong>
+                                                <br/>
+                                                <t t-if="doc.analyst.company_id.phone">
+                                                    <strong>
+                                                        Teléfono: (506) <span t-field="doc.analyst.company_id.phone"/>
+                                                    </strong>
+                                                </t>
+                                                <br/>
+                                                <t t-if="doc.analyst.company_id.email">
+                                                    <strong><span t-field="doc.analyst.company_id.email"/></strong>
+                                                </t>
+                                            </p>
                                         </td>
-                                        <td width="50%" rowspan="2" class="text-right">Logo</td>
+                                        <td style="font-size:16px" width="50%" class="text-right">
+                                            <img t-if="doc.analyst.company_id.logo" 
+                                                t-att-src="'data:image/png;base64,%s' % doc.analyst.company_id.logo" 
+                                                style="max-width: 200px;max-height: 50px;"/>
+                                            <p style="font-size:16px; color:#00457C;">
+                                                <strong>Sede Regional San Carlos</strong>
+                                            </p>
+                                            <p id="cod" style="font-size:26px; color:red;">
+                                                <strong>N° 0202</strong>
+                                            </p>
+                                        </td>
                                     </tr>
-                                    <tr>
-                                        <td style="font-size:16px"><strong>Telefono:(506)2401-3250</strong></td>
-                                    </tr>
-                                    <tr>
-                                        <td style="font-size:16px"><strong>analisis.agronomicos@gmail.com</strong></td>
-                                        <td style="font-size:16px" class="text-right"><strong>N° 0202</strong></td>
-                                    </tr>
-                                </table>
+                                </table> 
                             </div>
                             <div id="cBody" style="margin-top:7px;">
                                 <table id="tInfo" width="100%">
@@ -80,6 +108,7 @@
                                         </td>
                                     </tr>
                                 </table>
+                                <div style="width:100%;border-top: solid #00457C 1px;"></div>
                                 <br/>
                                 <!-- INFORMACION DE LAS MUESTRAS -->
                                 <table id="tInfo" width="100%">
@@ -101,12 +130,12 @@
                                             <td> </td>
                                         </tr>
                                     </t>
-                                    <tr>
-                                        <td colspan="2" style="background-color:white;"></td>
-                                        <td style="background-color:silver; border: 1px solid black;">
+                                    <tr style="font-size:18px">
+                                        <td colspan="2" style="background-color:#7BA4C0;"></td>
+                                        <td style="background-color:#7BA4C0;">
                                             <strong>TOTAL</strong>
                                         </td>
-                                        <td style="background-color:silver; border: 1px solid black;">
+                                        <td style="background-color:#7BA4C0;">
                                             <strong><span t-field="doc.cost"/></strong>
                                         </td>
                                     </tr>
@@ -115,15 +144,17 @@
                             <div id="cFooter" width="100%" style="margin-top:0px;">
                                 <table>
                                     <tr>
-                                        <td width="85%">
+                                        <td width="80%">
                                             <p style="font-size: 10px; font-style: italic;">
-                                                Codigo FUNDATEC 10-11-01<br/>
+                                                Código FUNDATEC 10-11-01<br/>
                                                 Número de Cuenta FUNDATEC<br/>
                                                 Banco Nacional de Costa Rica: 100-01-07500-3959-4, Banco de Costa Rica: 275-004039-8<br/>
                                                 Nota: En caso de realizar el pago directamente en el banco, favor presentar el omprobante en el laboratorio o enviarlo al correo electrónico.
                                             </p>
                                         </td>
-                                        <td width="15%" style="padding-top:10px;">Recibe:________________</td>
+                                        <td width="20%" style="padding-top:10px;">
+                                            <p><br/><br/>Recibe:____________________</p>
+                                        </td>
                                     </tr>
                                 </table>
                             </div>
