@@ -88,7 +88,7 @@
                                 border-bottom: solid black 1px;
                             }
                         </style>
-                        <table id="tm" class="" width="98%" style="margin-top:15px;margin-bottom:15px;">
+                        <table id="tm" class="" width="98%" style="margin-top:15px;margin-bottom:0px;">
                             <thead>
                                 <tr>
                                   <th colspan="2"></th>
@@ -170,6 +170,7 @@
                             </tbody>
                             <!--<tfoot><tr></tr></tfoot>-->
                         </table>
+                        <div style="width:98%;border-top: solid black 1px;"></div>
                         <!-- OBSERVACIONES Y METODOLOGIA-->
                         <style>
                             #tcomments, #tcomments tr, #tcomments tr td{

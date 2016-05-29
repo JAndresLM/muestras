@@ -27,7 +27,7 @@
                             }
                         </style>
                         <h2 class="text-center">REPORTE DE ENSAYO BROMATOLÓGICO</h2>
-                        <!--<hr/>-->
+                        <hr/>
                         <!-- INFORMACION DEL CLIENTE-->
                         <style>
                             #tinfo, #tinfo tr, #tinfo tr td, #tdir, #tdir tr, #tdir tr td {
@@ -70,7 +70,7 @@
                                 </td>
                             </tr>
                         </table>
-                        <!--<hr/>-->
+                        <hr/>
                         <!-- RESULTADOS DE LAS MUESTRAS-->
                         <style>
                             #tm, #tm tr, #tm tr th, #tm tr td {
@@ -98,7 +98,7 @@
                                 font-size:14px;
                             }
                         </style>
-                        <table id="tm" class="" width="98%" style="margin-top:15px;margin-bottom:15px;">
+                        <table id="tm" class="" width="98%" style="margin-top:15px;margin-bottom:0px;">
                             <thead>
                                 <tr>
                                   <th colspan="2"></th>
@@ -149,6 +149,7 @@
                             </tbody>
                             <!--<tfoot><tr></tr></tfoot>-->
                         </table>
+                        <div style="width:98%;border-top: solid black 1px;"></div>
                         <!-- OBSERVACIONES Y METODOLOGIA-->
                         <style>
                             #tcomments, #tcomments tr, #tcomments tr td{
