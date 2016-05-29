@@ -14,83 +14,120 @@
                 <t t-call="report.external_layout">
                     <div class="page">
                     	<style>
-                            *{
-                                font-size:14px;
+                            #cprincipal{
+                                width:100%;
+                                border:solid black 1px;
+                                padding:10px;
                             }
-                            h3{font-weight:bold;}
-                    	</style>
-                        <h2 class="text-center">REPORTE DE ENSAYO comprobante</h2>
-                        <hr/>
-                        <table id="tinfo" class="table table-condensed">
-                                <tr>
-                                    <td><strong>Cliente: </strong><span t-field="doc.customer"/></td>
-                                    <td><strong>Teléfono: </strong><span t-field="doc.customer.phone_ids[0].name"/></td>
-                                    <td><strong>Fecha: </strong><span t-field="doc.date"/></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Provincia: </strong><span t-field="doc.customer.province"/></td>
-                                    <td><strong>Canton: </strong><span t-field="doc.customer.canton"/></td>
-                                    <td><strong>Distrito: </strong><span t-field="doc.customer.district"/></td>
-                                </tr>
-                                <tr>
-                                    <td colspan="3"><strong>Otras Señas: </strong><span t-field="doc.customer.address"/></td>
-                                </tr>
-                        </table>
-                        <style>
-                            #tinfo, #tinfo tr, #tinfo tr td{
-                                border: solid white 1px;
+
+                            #tInfo, #tInfo tr, #tInfo tr td{
+                                border: 1px solid black;
+                                border-collapse: collapse;
+                                overflow:hidden;
+                                text-align:center;
+                            }
+                            #tHeader, #tHeader tr, #tHeader tr td{
+                                border-collapse: collapse;
+                                overflow:hidden;
                             }
                         </style>
-                        <hr/>
-                        <h3>Muestras Analizadas</h3>
-                        <t t-foreach="doc.sample_ids" t-as="m">
-                            <!-- INFORMACIÓN BASICA DE LA MUESTRA-->
-                            <table width="100%" id="tmuestra" class="">
-                                <tr>
-                                    <td width="20%"><strong>Codigo: </strong><span t-field="m.name"/></td>
-                                    <td width="60%"><strong>Identificacion de campo: </strong><span t-field="m.land"/></td>
-                                    <td width="20%"><strong>Cultivo: </strong><span t-field="m.crop"/></td>
-                                </tr>
-                            </table>
-                            <style>
-                            #tmuestra, #tmuestra tr, #tmuestra tr td{
-                                border: solid white 1px;
-                            }
-                            </style>
-                            <!-- RESULTADOS DE LA MUESTRA-->
-                            <table class="table table-condensed table-bordered table-responsive">
-                                <tr>
-                                    <t t-foreach="m.result_ids" t-as="a">
-                                        <td class="cell"><span t-field="a.element_id"/></td>
+                        <div id="cPrincipal">
+                            <div id="cHeader" style="border-bottom:solid red 4px;">
+                                <table id="tHeader" width="100%" style="margin-bottom:7px;">
+                                    <tr>
+                                        <td style="font-size:20px" width="50%">
+                                            <strong>Laboratorio de Analisis Agronomicos</strong>
+                                        </td>
+                                        <td width="50%" rowspan="2" class="text-right">Logo</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-size:16px"><strong>Telefono:(506)2401-3250</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-size:16px"><strong>analisis.agronomicos@gmail.com</strong></td>
+                                        <td style="font-size:16px" class="text-right"><strong>N° 0202</strong></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div id="cBody" style="margin-top:7px;">
+                                <table id="tInfo" width="100%">
+                                    <tr>
+                                        <td width="15%">
+                                            <strong>Cliente</strong>
+                                        </td>
+                                        <td width="45%">
+                                            <span t-field="doc.customer"/>
+                                        </td>
+                                        <td width="10%">
+                                            <strong>Fecha</strong>
+                                        </td>
+                                        <td width="30%">
+                                            <span t-field="doc.date" t-field-options='{"format":"dd/MM/y"}'/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="15%">
+                                            <strong>Cédula</strong>
+                                        </td>
+                                        <td width="45%">
+                                            <span t-field="doc.customer.idcard"/>
+                                        </td>
+                                        <td width="10%">
+                                            <strong>Hora</strong>
+                                        </td>
+                                        <td width="30%">
+                                            <span t-field="doc.date" t-field-options='{"format":"hh:mm:ss"}'/>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <br/>
+                                <!-- INFORMACION DE LAS MUESTRAS -->
+                                <table id="tInfo" width="100%">
+                                    <tr>
+                                        <td width="20%"><strong>Código asignado</strong></td>
+                                        <td width="15%"><strong>Tipo de Muestra</strong></td>
+                                        <td width="50%"><strong>Detalle de Análisis</strong></td>
+                                        <td width="15%"><strong>Costo Análisis</strong></td>
+                                    </tr>
+                                    <t t-foreach="doc.sample_ids" t-as="m">
+                                        <tr>
+                                            <td><span t-field="m.name"/></td>
+                                            <td><span t-field="m.category"/></td>
+                                            <td>
+                                                <t t-foreach="m.analysis_ids" t-as="a">
+                                                    <span t-field="a.name"/>,
+                                                </t>
+                                            </td>
+                                            <td> </td>
+                                        </tr>
                                     </t>
-                                </tr>
-                                <tr>
-                                    <t t-foreach="m.result_ids" t-as="a">
-                                        <td class="cell"><span t-field="a.valor"/></td>
-                                    </t>
-                                </tr>
-                            </table>
-                        </t>
-                        <!-- OBSERVACIONES Y METODOLOGIA-->
-                        <!--<table id="tcomments" class="table table-condensed">
-                            <tr t-if="doc.comments">
-                                <td width="20%"><strong>Observación:</strong></td>
-                                <td width="80%"><span t-field="doc.comments"/></td>
-                            </tr>
-                            <tr t-if="doc.methology">
-                                <td width="20%"><strong>Metodología:</strong></td>
-                                <td width="80%"><span t-field="doc.methology"/></td>
-                            </tr>
-                        </table>
-                        <style>
-                            #tcomments, #tcomments tr, #tcomments tr td{
-                                border: solid white 1px;
-                            }
-                        </style>-->
-                        
-                        <div style="margin-top:60px;">__________________________________________</div>
-                        <div><span t-field="doc.analyst.company_id.coordinator"/></div>
-                        <div><span t-field="doc.analyst.company_id.title"/></div>
+                                    <tr>
+                                        <td colspan="2" style="background-color:white;"></td>
+                                        <td style="background-color:silver; border: 1px solid black;">
+                                            <strong>TOTAL</strong>
+                                        </td>
+                                        <td style="background-color:silver; border: 1px solid black;">
+                                            <strong><span t-field="doc.cost"/></strong>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div id="cFooter" width="100%" style="margin-top:0px;">
+                                <table>
+                                    <tr>
+                                        <td width="85%">
+                                            <p style="font-size: 10px; font-style: italic;">
+                                                Codigo FUNDATEC 10-11-01<br/>
+                                                Número de Cuenta FUNDATEC<br/>
+                                                Banco Nacional de Costa Rica: 100-01-07500-3959-4, Banco de Costa Rica: 275-004039-8<br/>
+                                                Nota: En caso de realizar el pago directamente en el banco, favor presentar el omprobante en el laboratorio o enviarlo al correo electrónico.
+                                            </p>
+                                        </td>
+                                        <td width="15%" style="padding-top:10px;">Recibe:________________</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </t>
             </t>

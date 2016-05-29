@@ -27,7 +27,7 @@
                             }
                         </style>
                         <h2 class="text-center">REPORTE DE ENSAYO BROMATOLÓGICO</h2>
-                        <hr/>
+                        <!--<hr/>-->
                         <!-- INFORMACION DEL CLIENTE-->
                         <style>
                             #tinfo, #tinfo tr, #tinfo tr td, #tdir, #tdir tr, #tdir tr td {
@@ -70,7 +70,7 @@
                                 </td>
                             </tr>
                         </table>
-                        <hr/>
+                        <!--<hr/>-->
                         <!-- RESULTADOS DE LAS MUESTRAS-->
                         <style>
                             #tm, #tm tr, #tm tr th, #tm tr td {
