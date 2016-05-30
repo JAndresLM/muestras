@@ -7,7 +7,7 @@ class Sample(models.Model):
 	_name = 'lab.sample'
 	name = fields.Char(string="Código de Muestra", required=True)
 	category = fields.Many2one('lab.category', string="Tipo de muestra")
-	ticket = fields.Many2one('lab.ticket', string="Boleta",ondelete='cascade',required=True)
+	ticket = fields.Many2one('lab.ticket', string="Boleta",ondelete='cascade',required=True, default=lambda self: self.env['lab.ticket'].search([],limit=1, order="id desc").id)
 	active = fields.Boolean(default=True, string="Activo")
 	province = fields.Many2one('customers.province', ondelete='cascade', string="Provincia")
 	canton = fields.Many2one('customers.canton', ondelete='cascade', string="Cantón")
