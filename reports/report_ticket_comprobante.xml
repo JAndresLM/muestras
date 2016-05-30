@@ -11,7 +11,7 @@
     <template id="report_ticket_comprobante_view">
         <t t-call="report.html_container">
             <t t-foreach="docs" t-as="doc">
-                <t t-call="report.external_layout">
+                <!--<t t-call="report.external_layout">-->
                     <div class="page">
                     	<style>
                             #cPrincipal{
@@ -132,6 +132,26 @@
                                             <td><t t-esc="price"/></td>
                                         </tr>
                                     </t>
+                                    <!--totales-->
+                                    <tr style="font-size:16px">
+                                        <td colspan="2" style="background-color:#7BA4C0;"></td>
+                                        <td style="background-color:#7BA4C0;">
+                                            <strong>Subtotal</strong>
+                                        </td>
+                                        <td style="background-color:#7BA4C0;">
+                                            <strong><span t-field="doc.subtotal"/></strong>
+                                        </td>
+                                    </tr>
+                                    <tr style="font-size:16px">
+                                        <td colspan="2" style="background-color:#7BA4C0;"></td>
+                                        <td style="background-color:#7BA4C0;">
+                                            <strong>Descuento (<span t-field="doc.discount"/>%)</strong>
+                                        </td>
+                                        <td style="background-color:#7BA4C0;">
+                                            <t t-set="discount" t-value="doc.subtotal*doc.discount/100"/>
+                                            <strong><t t-esc="discount"/></strong>
+                                        </td>
+                                    </tr>
                                     <tr style="font-size:18px">
                                         <td colspan="2" style="background-color:#7BA4C0;"></td>
                                         <td style="background-color:#7BA4C0;">
@@ -155,14 +175,17 @@
                                             </p>
                                         </td>
                                         <td width="20%" style="padding-top:10px;">
-                                            <p><br/><br/>Recibe:____________________</p>
+                                            <p>
+                                                <br/><br/>
+                                                <strong>Recibe:</strong> <span style="text-decoration: underline;" t-field="doc.analyst"/>
+                                            </p>
                                         </td>
                                     </tr>
                                 </table>
                             </div>
                         </div>
                     </div>
-                </t>
+                <!--</t>-->
             </t>
         </t>
     </template>

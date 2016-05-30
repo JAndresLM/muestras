@@ -11,6 +11,7 @@ class Ticket(models.Model):
 	customer = fields.Many2one('customers.customer', string="Cliente", required=True)
 	active = fields.Boolean(default=True, string="Activo")
 	report = fields.Many2one('lab.report',string="Tipo de informe")
+	subtotal= fields.Integer(string="SubTotal",compute='_get_subtotal')
 	discount = fields.Integer(string="Descuento", default=0)
 	cost= fields.Integer(string="Costo Total",compute='_get_cost')
 	paid = fields.Boolean(default=False, string="Pago Realizado")
@@ -55,6 +56,15 @@ class Ticket(models.Model):
 					sum_cost=sum_cost+a.cost
 			disc=sum_cost*record.discount/100
 			record.cost=sum_cost-disc
+
+	@api.depends('sample_ids')
+	def _get_subtotal(self):
+		for record in self:
+			sum_cost=0
+			for m in record.sample_ids:
+				for a in m.analysis_ids:
+					sum_cost=sum_cost+a.cost
+			record.subtotal=sum_cost
 
 	_sql_constraints = [
 		('name_unique',

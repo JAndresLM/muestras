@@ -23,7 +23,7 @@
                             }
 
                             hr{
-                                border:solid black 1px;
+                                border:solid red 2px;
                             }
                         </style>
                         <h2 class="text-center">REPORTE DE ENSAYO SUELOS</h2>
@@ -61,7 +61,7 @@
                         <table id="tdir" width="100%">
                             <tr>
                                 <td width="50%"><strong>Provincia: </strong><span t-field="doc.customer.province"/></td>
-                                <td width="25%"><strong>Canton: </strong><span t-field="doc.customer.canton"/></td>
+                                <td width="25%"><strong>Cantón: </strong><span t-field="doc.customer.canton"/></td>
                                 <td width="25%"><strong>Distrito: </strong><span t-field="doc.customer.district"/></td>
                             </tr>
                             <tr>

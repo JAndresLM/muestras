@@ -15,8 +15,8 @@
 					<sheet>
 						<group>
 							<group string="Información">
-								<field name="name"/>
 								<field name="category" widget="selection"/>
+								<field name="name"/>
 								<field name="ticket" widget="selection"/>
 								<field name="crop"/>
 								<field name="land"/>

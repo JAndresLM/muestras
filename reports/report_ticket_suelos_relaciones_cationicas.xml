@@ -23,7 +23,7 @@
                             }
 
                             hr{
-                                border:solid black 1px;
+                                border:solid red 2px;
                             }
                         </style>
                         <h2 class="text-center">REPORTE DE ENSAYO SUELOS</h2>
@@ -61,7 +61,7 @@
                         <table id="tdir" width="100%">
                             <tr>
                                 <td width="50%"><strong>Provincia: </strong><span t-field="doc.customer.province"/></td>
-                                <td width="25%"><strong>Canton: </strong><span t-field="doc.customer.canton"/></td>
+                                <td width="25%"><strong>Cantón: </strong><span t-field="doc.customer.canton"/></td>
                                 <td width="25%"><strong>Distrito: </strong><span t-field="doc.customer.district"/></td>
                             </tr>
                             <tr>
@@ -343,6 +343,8 @@
                                                 </t>
                                             </td>
                                             <!--C.I.C.E-->
+                                            <t t-set="cice" t-value="0.0"/>
+                                            <t t-set="acidez" t-value="0.0"/>
                                             <td>
                                                 <t t-set="Ac" t-value="'0,0'"/>
                                                 <t t-set="Ca" t-value="'0,0'"/>
@@ -352,6 +354,7 @@
                                                     <t t-if="a.element_id.name=='Acidez ext.'">
                                                         <t t-if="a.valor">
                                                             <t t-set="Ac" t-value="a.valor"/>
+                                                            <t t-set="acidez" t-value="float(Ac.replace(',', '.'))"/>
                                                         </t>
                                                     </t>
                                                     <t t-if="a.element_id.name=='Ca'">
@@ -374,13 +377,18 @@
                                                     t-value="float(Ca.replace(',', '.'))+float(Mg.replace(',', '.'))+float(K.replace(',', '.'))+float(Ac.replace(',', '.'))"/>
                                                 <t t-if="relcat!=0.0">
                                                     <t t-esc="relcat"/>
+                                                    <t t-set="cice" t-value="relcat"/>
                                                 </t>
                                             </td>
+                                            <!--Saturacion de acidez-->
                                             <td>
-                                                <t t-foreach="m.result_ids" t-as="a">
-                                                    <t t-if="a.element_id.name=='Saturacion de acidez'"><span t-field="a.valor"/></t>
+                                                <t t-set="relcat" t-value="(acidez/cice)*100"/>
+                                                <t t-if="relcat!=0.0">
+                                                    <t t-set="relcat" t-value="round(relcat,2)"/>
+                                                    <t t-esc="relcat"/>
                                                 </t>
                                             </td>
+                                            <!--Demas Analisis-->
                                             <td>
                                                 <t t-foreach="m.result_ids" t-as="a">
                                                     <t t-if="a.element_id.name=='Materia Organica'"><span t-field="a.valor"/></t>

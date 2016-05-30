@@ -16,6 +16,7 @@
 							</group>
 							<group string="Otros">
 								<field name="report" widget="selection"/>
+								<field name="subtotal"/>
 								<field name="discount"/>
 								<field name="cost"/>
 								<field name="paid"/>
