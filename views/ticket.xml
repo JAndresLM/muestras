@@ -10,12 +10,12 @@
 							<group string="Información">
 								<field name="name"/>
 								<field name="customer"/>
-								<field name="analyst"/>
+								<field name="analyst" widget="selection"/>
 								<field name="date"/>
 								<field name="active"/>
 							</group>
 							<group string="Otros">
-								<field name="report"/>
+								<field name="report" widget="selection"/>
 								<field name="discount"/>
 								<field name="cost"/>
 								<field name="paid"/>
