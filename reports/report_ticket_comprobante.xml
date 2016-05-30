@@ -25,7 +25,7 @@
                                 color:#00457C;
                             }
 
-                            #cPrincipal #cHeader #cod strong{
+                            #cPrincipal #cHeader #cod strong span{
                                 color:red;
                             }
 
@@ -71,7 +71,7 @@
                                                 <strong>Sede Regional San Carlos</strong>
                                             </p>
                                             <p id="cod" style="font-size:26px; color:red;">
-                                                <strong>N° 0202</strong>
+                                                <strong><span t-field="doc.name"/></strong>
                                             </p>
                                         </td>
                                     </tr>
