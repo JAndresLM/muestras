@@ -12,7 +12,7 @@
 							<field name="cost"/>
 						</group>
 						<notebook>
-                            <page string="elementos Pertenecientes">
+                            <page string="Elementos Pertenecientes">
                             	<field name="elements_ids"/>
                             </page>
                         </notebook>

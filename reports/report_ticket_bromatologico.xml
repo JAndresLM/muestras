@@ -125,12 +125,12 @@
                                             </td>
                                             <td>
                                                 <t t-foreach="m.result_ids" t-as="a">
-                                                    <t t-if="a.element_id.name=='Proteína'"><span t-field="a.valor"/></t>
+                                                    <t t-if="a.element_id.name=='Proteina'"><span t-field="a.valor"/></t>
                                                 </t>
                                             </td>
                                             <td>
                                                 <t t-foreach="m.result_ids" t-as="a">
-                                                    <t t-if="a.element_id.name=='Fibra Detergente Ácida'"><span t-field="a.valor"/></t>
+                                                    <t t-if="a.element_id.name=='Fibra Detergente Acida'"><span t-field="a.valor"/></t>
                                                 </t>
                                             </td>
                                             <td>
@@ -140,7 +140,7 @@
                                             </td>
                                             <td>
                                                 <t t-foreach="m.result_ids" t-as="a">
-                                                    <t t-if="a.element_id.name=='Materia Seca 105°'"><span t-field="a.valor"/></t>
+                                                    <t t-if="a.element_id.name=='Materia Seca 105'"><span t-field="a.valor"/></t>
                                                 </t>
                                             </td>
                                         </tr>

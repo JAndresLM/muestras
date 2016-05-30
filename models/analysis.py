@@ -7,5 +7,5 @@ class Analysis(models.Model):
 	_name = 'lab.analysis'
 	name = fields.Char(string="Nombre del análisis", required=True)
 	category = fields.Many2one('lab.category', string="Tipo de análisis", required=True)
-	cost = fields.Integer(string="costo del análisis")
+	cost = fields.Integer(string="Costo del análisis")
 	elements_ids = fields.Many2many('lab.element',string="Elementos Pertenecientes")
