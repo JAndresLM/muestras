@@ -21,6 +21,7 @@
         'reports/report_ticket_comprobante.xml',
         'reports/report_ticket_foliar.xml',
         'reports/report_ticket_suelos.xml',
+        'reports/report_ticket_suelos_relaciones_cationicas.xml',
         'reports/report_ticket_bromatologico.xml',
     ],
     'demo': [

@@ -1,14 +1,14 @@
 <openerp>
 <data>
     <report
-        id="report_ticket_suelos"
+        id="report_ticket_suelos_relaciones_cationicas"
         model="lab.ticket"
-        string="Reporte de ensayo suelos"
-        name="muestras.report_ticket_suelos_view"
-        file="muestras.report_ticket_suelos"
+        string="Reporte de ensayo suelos con relaciones cationicas"
+        name="muestras.report_ticket_suelos_relaciones_cationicas_view"
+        file="muestras.report_ticket_suelos_relaciones_cationicas"
         report_type="qweb-pdf"/>
 
-    <template id="report_ticket_suelos_view">
+    <template id="report_ticket_suelos_relaciones_cationicas_view">
         <t t-call="report.html_container">
             <t t-foreach="docs" t-as="doc">
                 <t t-call="report.external_layout">
@@ -210,6 +210,123 @@
                                     <td>50,0</td>
                                     <td>10,0</td>
                                     <td>40,0</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        <div style="width:98%;border-top: solid black 1px;"></div>
+                        <!-- RELACIONES CATIONICAS-->
+                        <table id="tm" class="" width="98%" style="margin-top:15px;margin-bottom:0px;">
+                            <thead>
+                                <tr>
+                                  <th colspan="7"></th>
+                                  <th colspan="3">%</th>
+                                </tr>
+                                <tr>
+                                  <th width="8%">N° Lab</th>
+                                  <th width="30%">Relaciones cationicas</th>
+                                  <th width="6%">Ca/Mg</th>
+                                  <th width="8%">Ca/k</th>
+                                  <th width="6%">Mg/K</th>
+                                  <th width="12%">(Ca+Mg)/K</th>
+                                  <th width="6%">C.I.C.E</th>
+                                  <th width="12%">Saturación de acidez</th>
+                                  <th width="6%">Materia Orgánica</th>
+                                  <th width="6%">Carbono Orgánico</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="doc.sample_ids" t-as="m">
+                                    <t t-if="m.name[0]=='S'">
+                                        <tr >
+                                            <td>
+                                                <span t-field="m.name"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="m.land"/>
+                                            </td>
+                                            <!--Ca/Mg-->
+                                            <td>
+                                                <t t-set="Ca" t-value="'0,0'"/>
+                                                <t t-set="Mg" t-value="'1,0'"/>
+                                                <t t-foreach="m.result_ids" t-as="a">
+                                                    <t t-if="a.element_id.name=='Ca'">
+                                                        <t t-if="a.valor">
+                                                            <t t-set="Ca" t-value="a.valor"/>
+                                                        </t>
+                                                    </t>
+                                                    <t t-if="a.element_id.name=='Mg'">
+                                                        <t t-if="a.valor">
+                                                            <t t-set="Mg" t-value="a.valor"/>
+                                                        </t>
+                                                    </t>
+                                                </t>
+                                                <t t-set="relcat" 
+                                                    t-value="float(Ca.replace(',', '.'))/float(Mg.replace(',', '.'))"/>
+                                                <t t-if="relcat!=0.0">
+                                                    <t t-esc="relcat"/>
+                                                </t>
+                                            </td>
+                                            <!--Ca/Mg-->
+                                            <td>
+                                                <t t-foreach="m.result_ids" t-as="a">
+                                                    <t t-if="a.element_id.name=='Acidez ext.'"><span t-field="a.valor"/></t>
+                                                </t>
+                                            </td>
+                                            <td>
+                                                <t t-foreach="m.result_ids" t-as="a">
+                                                    <t t-if="a.element_id.name=='Ca'"><span t-field="a.valor"/></t>
+                                                </t>
+                                            </td>
+                                            <td>
+                                                <t t-foreach="m.result_ids" t-as="a">
+                                                    <t t-if="a.element_id.name=='Mg'"><span t-field="a.valor"/></t>
+                                                </t>
+                                            </td>
+                                            <td>
+                                                <t t-foreach="m.result_ids" t-as="a">
+                                                    <t t-if="a.element_id.name=='K'"><span t-field="a.valor"/></t>
+                                                </t>
+                                            </td>
+                                            <td>
+                                                <t t-foreach="m.result_ids" t-as="a">
+                                                    <t t-if="a.element_id.name=='Cu'"><span t-field="a.valor"/></t>
+                                                </t>
+                                            </td>
+                                            <td>
+                                                <t t-foreach="m.result_ids" t-as="a">
+                                                    <t t-if="a.element_id.name=='Mn'"><span t-field="a.valor"/></t>
+                                                </t>
+                                            </td>
+                                            <td>
+                                                <t t-foreach="m.result_ids" t-as="a">
+                                                    <t t-if="a.element_id.name=='Fe'"><span t-field="a.valor"/></t>
+                                                </t>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </t>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td rowspan="2" colspan="2">Rangos Medios</td>
+                                    <td>2,0</td>
+                                    <td>5,0</td>
+                                    <td>2,5</td>
+                                    <td>10,0</td>
+                                    <td>5</td>
+                                    <td>10,0</td>
+                                    <td>3</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>5,0</td>
+                                    <td>25,0</td>
+                                    <td>15</td>
+                                    <td>40,0</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>10</td>
+                                    <td></td>
                                 </tr>
                             </tfoot>
                         </table>
