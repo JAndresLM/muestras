@@ -263,43 +263,132 @@
                                                 <t t-set="relcat" 
                                                     t-value="float(Ca.replace(',', '.'))/float(Mg.replace(',', '.'))"/>
                                                 <t t-if="relcat!=0.0">
+                                                    <t t-set="relcat" t-value="round(relcat,2)"/>
                                                     <t t-esc="relcat"/>
                                                 </t>
                                             </td>
-                                            <!--Ca/Mg-->
+                                            <!--Ca/K-->
                                             <td>
+                                                <t t-set="Ca" t-value="'0,0'"/>
+                                                <t t-set="K" t-value="'1,0'"/>
                                                 <t t-foreach="m.result_ids" t-as="a">
-                                                    <t t-if="a.element_id.name=='Acidez ext.'"><span t-field="a.valor"/></t>
+                                                    <t t-if="a.element_id.name=='Ca'">
+                                                        <t t-if="a.valor">
+                                                            <t t-set="Ca" t-value="a.valor"/>
+                                                        </t>
+                                                    </t>
+                                                    <t t-if="a.element_id.name=='K'">
+                                                        <t t-if="a.valor">
+                                                            <t t-set="K" t-value="a.valor"/>
+                                                        </t>
+                                                    </t>
+                                                </t>
+                                                <t t-set="relcat" 
+                                                    t-value="float(Ca.replace(',', '.'))/float(K.replace(',', '.'))"/>
+                                                <t t-if="relcat!=0.0">
+                                                    <t t-set="relcat" t-value="round(relcat,2)"/>
+                                                    <t t-esc="relcat"/>
+                                                </t>
+                                            </td>
+                                            <!--Mg/K-->
+                                            <td>
+                                                <t t-set="Mg" t-value="'0,0'"/>
+                                                <t t-set="K" t-value="'1,0'"/>
+                                                <t t-foreach="m.result_ids" t-as="a">
+                                                    <t t-if="a.element_id.name=='Mg'">
+                                                        <t t-if="a.valor">
+                                                            <t t-set="Mg" t-value="a.valor"/>
+                                                        </t>
+                                                    </t>
+                                                    <t t-if="a.element_id.name=='K'">
+                                                        <t t-if="a.valor">
+                                                            <t t-set="K" t-value="a.valor"/>
+                                                        </t>
+                                                    </t>
+                                                </t>
+                                                <t t-set="relcat" 
+                                                    t-value="float(Mg.replace(',', '.'))/float(K.replace(',', '.'))"/>
+                                                <t t-if="relcat!=0.0">
+                                                    <t t-set="relcat" t-value="round(relcat,2)"/>
+                                                    <t t-esc="relcat"/>
+                                                </t>
+                                            </td>
+                                            <!--(Ca+Mg/K)-->
+                                            <td>
+                                                <t t-set="Ca" t-value="'0,0'"/>
+                                                <t t-set="Mg" t-value="'0,0'"/>
+                                                <t t-set="K" t-value="'1,0'"/>
+                                                <t t-foreach="m.result_ids" t-as="a">
+                                                    <t t-if="a.element_id.name=='Ca'">
+                                                        <t t-if="a.valor">
+                                                            <t t-set="Ca" t-value="a.valor"/>
+                                                        </t>
+                                                    </t>
+                                                    <t t-if="a.element_id.name=='Mg'">
+                                                        <t t-if="a.valor">
+                                                            <t t-set="Mg" t-value="a.valor"/>
+                                                        </t>
+                                                    </t>
+                                                    <t t-if="a.element_id.name=='K'">
+                                                        <t t-if="a.valor">
+                                                            <t t-set="K" t-value="a.valor"/>
+                                                        </t>
+                                                    </t>
+                                                </t>
+                                                <t t-set="relcat" 
+                                                    t-value="(float(Ca.replace(',', '.'))+float(Mg.replace(',', '.')))/float(K.replace(',', '.'))"/>
+                                                <t t-if="relcat!=0.0">
+                                                    <t t-set="relcat" t-value="round(relcat,2)"/>
+                                                    <t t-esc="relcat"/>
+                                                </t>
+                                            </td>
+                                            <!--C.I.C.E-->
+                                            <td>
+                                                <t t-set="Ac" t-value="'0,0'"/>
+                                                <t t-set="Ca" t-value="'0,0'"/>
+                                                <t t-set="Mg" t-value="'0,0'"/>
+                                                <t t-set="K" t-value="'0,0'"/>
+                                                <t t-foreach="m.result_ids" t-as="a">
+                                                    <t t-if="a.element_id.name=='Acidez ext.'">
+                                                        <t t-if="a.valor">
+                                                            <t t-set="Ac" t-value="a.valor"/>
+                                                        </t>
+                                                    </t>
+                                                    <t t-if="a.element_id.name=='Ca'">
+                                                        <t t-if="a.valor">
+                                                            <t t-set="Ca" t-value="a.valor"/>
+                                                        </t>
+                                                    </t>
+                                                    <t t-if="a.element_id.name=='Mg'">
+                                                        <t t-if="a.valor">
+                                                            <t t-set="Mg" t-value="a.valor"/>
+                                                        </t>
+                                                    </t>
+                                                    <t t-if="a.element_id.name=='K'">
+                                                        <t t-if="a.valor">
+                                                            <t t-set="K" t-value="a.valor"/>
+                                                        </t>
+                                                    </t>
+                                                </t>
+                                                <t t-set="relcat" 
+                                                    t-value="float(Ca.replace(',', '.'))+float(Mg.replace(',', '.'))+float(K.replace(',', '.'))+float(Ac.replace(',', '.'))"/>
+                                                <t t-if="relcat!=0.0">
+                                                    <t t-esc="relcat"/>
                                                 </t>
                                             </td>
                                             <td>
                                                 <t t-foreach="m.result_ids" t-as="a">
-                                                    <t t-if="a.element_id.name=='Ca'"><span t-field="a.valor"/></t>
+                                                    <t t-if="a.element_id.name=='Saturacion de acidez'"><span t-field="a.valor"/></t>
                                                 </t>
                                             </td>
                                             <td>
                                                 <t t-foreach="m.result_ids" t-as="a">
-                                                    <t t-if="a.element_id.name=='Mg'"><span t-field="a.valor"/></t>
+                                                    <t t-if="a.element_id.name=='Materia Organica'"><span t-field="a.valor"/></t>
                                                 </t>
                                             </td>
                                             <td>
                                                 <t t-foreach="m.result_ids" t-as="a">
-                                                    <t t-if="a.element_id.name=='K'"><span t-field="a.valor"/></t>
-                                                </t>
-                                            </td>
-                                            <td>
-                                                <t t-foreach="m.result_ids" t-as="a">
-                                                    <t t-if="a.element_id.name=='Cu'"><span t-field="a.valor"/></t>
-                                                </t>
-                                            </td>
-                                            <td>
-                                                <t t-foreach="m.result_ids" t-as="a">
-                                                    <t t-if="a.element_id.name=='Mn'"><span t-field="a.valor"/></t>
-                                                </t>
-                                            </td>
-                                            <td>
-                                                <t t-foreach="m.result_ids" t-as="a">
-                                                    <t t-if="a.element_id.name=='Fe'"><span t-field="a.valor"/></t>
+                                                    <t t-if="a.element_id.name=='Carbono Organico'"><span t-field="a.valor"/></t>
                                                 </t>
                                             </td>
                                         </tr>
