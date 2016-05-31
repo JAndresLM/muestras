@@ -23,7 +23,7 @@
                             }
                         </style>
                         <h2 class="text-center">REPORTE DE ENSAYO BROMATOLÓGICO</h2>
-                        <div style="width:100%;border-top: solid red 4px;"></div>
+                        <div style="width:98%;border-top: solid red 4px;"></div>
                         <!-- INFORMACION DEL CLIENTE-->
                         <style>
                             #tinfo, #tinfo tr, #tinfo tr td, #tdir, #tdir tr, #tdir tr td {
@@ -66,7 +66,7 @@
                                 </td>
                             </tr>
                         </table>
-                        <div style="width:100%;border-top: solid red 4px;"></div>
+                        <div style="width:98%;border-top: solid red 4px;"></div>
                         <!-- RESULTADOS DE LAS MUESTRAS-->
                         <style>
                             #tm, #tm tr, #tm tr th, #tm tr td {
