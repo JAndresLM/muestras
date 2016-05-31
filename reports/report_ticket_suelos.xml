@@ -21,13 +21,9 @@
                             h3{
                                 font-weight:bold;
                             }
-
-                            hr{
-                                border:solid red 2px;
-                            }
                         </style>
                         <h2 class="text-center">REPORTE DE ENSAYO SUELOS</h2>
-                        <hr/>
+                        <div style="width:100%;border-top: solid red 4px;"></div>
                         <!-- INFORMACION DEL CLIENTE-->
                         <style>
                             #tinfo, #tinfo tr, #tinfo tr td, #tdir, #tdir tr, #tdir tr td {
@@ -70,7 +66,7 @@
                                 </td>
                             </tr>
                         </table>
-                        <hr/>
+                        <div style="width:100%;border-top: solid red 4px;"></div>
                         <!-- RESULTADOS DE LAS MUESTRAS-->
                         <style>
                             #tm, #tm tr, #tm tr th, #tm tr td {
@@ -88,15 +84,16 @@
                                 border-bottom: solid black 1px;
                             }
 
-                            tfoot tr, tfoot tr td{
+                            #tm tfoot tr, #tm tfoot tr td{
                                 height:5px;
                                 font-size:10px;
-                                padding:0px;
                                 font-style: italic;
+                                padding:0px;
                             }
 
-                            tfoot tr:first-child td:first-child {
-                                font-size:14px;
+                            #tm tfoot tr:first-child td:first-child {
+                                font-size:14px
+                                padding:7px;
                             }
                         </style>
                         <table id="tm" class="" width="98%" style="margin-top:15px;margin-bottom:0px;">
@@ -187,7 +184,9 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <td rowspan="2" colspan="2">Rangos Medios</td>
+                                    <td rowspan="2" colspan="2">
+                                        <span style="font-size:11.5px;">Rangos Medios</span>
+                                    </td>
                                     <td>5,5</td>
                                     <td>0,5</td>
                                     <td>4,0</td>
@@ -227,7 +226,7 @@
                                     <!--<span t-field="doc.sample_ids[0].category.methology"/>-->
                                     <ul>
                                       <li>Muestras tomadas por el interesado.</li>
-                                      <li>Los resultados de este ensayo reflejan unicamente a la muestra entregada en el laboratorio por el interesado.</li>
+                                      <li>Los resultados de este ensayo reflejan únicamente a la muestra entregada en el laboratorio por el interesado.</li>
                                     </ul>
                                 </td>
                             </tr>

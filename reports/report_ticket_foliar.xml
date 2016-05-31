@@ -21,13 +21,9 @@
                             h3{
                                 font-weight:bold;
                             }
-
-                            hr{
-                                border:solid red 2px;
-                            }
                     	</style>
                         <h2 class="text-center">REPORTE DE ENSAYO FOLIAR</h2>
-                        <hr/>
+                        <div style="width:100%;border-top: solid red 4px;"></div>
                         <!-- INFORMACION DEL CLIENTE-->
                         <style>
                             #tinfo, #tinfo tr, #tinfo tr td, #tdir, #tdir tr, #tdir tr td {
@@ -70,7 +66,7 @@
                                 </td>
                             </tr>
                         </table>
-                        <hr/>
+                        <div style="width:100%;border-top: solid red 4px;"></div>
                         <!-- RESULTADOS DE LAS MUESTRAS-->
                         <style>
                             #tm, #tm th, #tm td {
@@ -185,7 +181,7 @@
                                     <ul>
                                       <li>Las unidades estan expresadas en base seca.</li>
                                       <li>Muestras tomadas por el interesado.</li>
-                                      <li>Los resultados de este ensayo reflejan unicamente a la muestra entregada en el laboratorio por el interesado.</li>
+                                      <li>Los resultados de este ensayo reflejan únicamente a la muestra entregada en el laboratorio por el interesado.</li>
                                     </ul>
                                 </td>
                             </tr>

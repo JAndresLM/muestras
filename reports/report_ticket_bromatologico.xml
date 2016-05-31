@@ -21,13 +21,9 @@
                             h3{
                                 font-weight:bold;
                             }
-
-                            hr{
-                                border:solid red 2px;
-                            }
                         </style>
                         <h2 class="text-center">REPORTE DE ENSAYO BROMATOLÓGICO</h2>
-                        <hr/>
+                        <div style="width:100%;border-top: solid red 4px;"></div>
                         <!-- INFORMACION DEL CLIENTE-->
                         <style>
                             #tinfo, #tinfo tr, #tinfo tr td, #tdir, #tdir tr, #tdir tr td {
@@ -70,7 +66,7 @@
                                 </td>
                             </tr>
                         </table>
-                        <hr/>
+                        <div style="width:100%;border-top: solid red 4px;"></div>
                         <!-- RESULTADOS DE LAS MUESTRAS-->
                         <style>
                             #tm, #tm tr, #tm tr th, #tm tr td {
@@ -163,7 +159,7 @@
                                     <!--<span t-field="doc.sample_ids[0].category.methology"/>-->
                                     <ul>
                                       <li>Muestras tomadas por el interesado.</li>
-                                      <li>Los resultados de este ensayo reflejan unicamente a la muestra entregada en el laboratorio por el interesado.</li>
+                                      <li>Los resultados de este ensayo reflejan únicamente a la muestra entregada en el laboratorio por el interesado.</li>
                                       <li>Los datos presentados son valores promedio expresados en porcentaje.</li>
                                     </ul>
                                 </td>
