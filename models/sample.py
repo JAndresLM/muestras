@@ -75,3 +75,19 @@ class Sample(models.Model):
 			'UNIQUE(name)',
 			"No se admiten códigos de muestras repetidos"),
 	]
+
+	@api.onchange('province')
+	def _get_cantons(self):
+		self.canton = self.env['customers.canton']
+		vals = {}
+		if self.province:
+			vals['domain'] = {'canton': [('province_id', 'in', self.province._ids)]}
+		return vals
+
+	@api.onchange('canton')
+	def _get_districts(self):
+		self.district = self.env['customers.district']
+		vals = {}
+		if self.canton:
+			vals['domain'] = {'district': [('canton_id', 'in', self.canton._ids)]}
+		return vals
