@@ -12,7 +12,7 @@ class Ticket(models.Model):
 	active = fields.Boolean(default=True, string="Activo")
 	report = fields.Many2one('lab.report',string="Tipo de informe")
 	subtotal= fields.Integer(string="SubTotal",compute='_get_subtotal')
-	discount = fields.Integer(string="Descuento", default=0)
+	discount = fields.Integer(string="Descuento (%)", default=0)
 	cost= fields.Integer(string="Costo Total",compute='_get_cost')
 	paid = fields.Boolean(default=False, string="Pago Realizado")
 	invoice = fields.Char(string="Número de factura",default=False)

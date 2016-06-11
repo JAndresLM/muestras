@@ -154,7 +154,7 @@
                                                     <t t-set="price" t-value="price + a.cost"/>
                                                 </t>
                                             </td>
-                                            <td id="tdc"><t t-esc="price"/></td>
+                                            <td id="tdc">&#8353;<t t-esc="price"/></td>
                                         </tr>
                                     </t>
                                 </table>
@@ -182,7 +182,7 @@
                                                         <strong>Subtotal</strong>
                                                     </td>
                                                     <td id="tdc" width="32.5%">
-                                                        <strong><span t-field="doc.subtotal"/></strong>
+                                                        <strong>&#8353;<span t-field="doc.subtotal"/></strong>
                                                     </td>
                                                 </tr>
                                                 <tr style="font-size:16px">
@@ -191,7 +191,7 @@
                                                     </td>
                                                     <td id="tdc">
                                                         <t t-set="discount" t-value="doc.subtotal*doc.discount/100"/>
-                                                        <strong><t t-esc="discount"/></strong>
+                                                        <strong>&#8353;<t t-esc="discount"/></strong>
                                                     </td>
                                                 </tr>
                                                 <tr style="font-size:18px">
@@ -199,7 +199,7 @@
                                                         <strong>TOTAL</strong>
                                                     </td>
                                                     <td id="tdc">
-                                                        <strong><span t-field="doc.cost"/></strong>
+                                                        <strong>&#8353;<span t-field="doc.cost"/></strong>
                                                     </td>
                                                 </tr>
                                             </table>
